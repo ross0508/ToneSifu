@@ -11,6 +11,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --primary-colour: #000000;
+  --secondary-colour: #AED8AC;
+  --highlight-colour: #cc0003;
 }
 
 * {

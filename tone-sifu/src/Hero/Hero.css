@@ -6,8 +6,25 @@
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.hero-left {
     flex-direction: column;
     align-items: flex-start;
+}
+
+.hero-right {
+    height: fit-content;
+    width: fit-content;
+    min-width: 42.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 2rem;
+    background-color: rgba(175, 175, 175, 0.35);
+    border-radius: 10px;
 }
 
 .hero-title {
@@ -15,7 +32,8 @@
     font-weight: 700;
     text-align: left;
     margin: 0;
-    padding: 3rem;
+    padding-left: 1rem;
+    padding-top: 1rem
 }
 
 .hero-subtitle {
@@ -23,5 +41,35 @@
     font-weight: 500;
     text-align: left;
     margin: 0;
-    padding-left: 3rem
+    padding-left: 1rem;
+}
+
+.hero-button {
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    padding: 4rem 8rem;
+    margin: 15px;
+    margin-top: 2rem;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4), inset 0 0 20px 10px rgba(255, 255, 255, 0.2);
+    text-size-adjust: 100%;
+    
+}
+
+.hero-button-primary {
+    background-color: var(--primary-colour);
+    color: #f5f5f5;
+}
+
+.hero-button-secondary {
+    background-color: var(--highlight-colour);
+    color: #f5f5f5;
+}
+
+p {
+    margin: 15px;
 }
