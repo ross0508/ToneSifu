@@ -1,9 +1,11 @@
 import './Navbar.css'
+import { Link } from 'react-router-dom'
+
 export default function Navbar() {
   return (
     <ul className="navbar-container">
-        <button className="navbutton navbutton-primary">Home</button>
-        <button className="navbutton navbutton-secondary">Profile</button>
+        <Link to="/" className="navbutton navbutton-primary">Home</Link>
+        <Link to="/Training" className="navbutton navbutton-secondary">Training</Link>
     </ul>
   )
 }
