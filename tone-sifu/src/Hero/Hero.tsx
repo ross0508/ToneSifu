@@ -1,20 +1,21 @@
 import './Hero.css'
+import heroimg from '../assets/heroimg.jpg'
+import LoginButton from '../LoginButton/LoginButton'
 
 export default function Hero() {
   return (
     <div className="hero-container">
       <div className="hero-left">
-        <h1 className='hero-title'>About</h1>
-      </div>
-      <div className="hero-right">
-        <h1 className="hero-title">Tone Sifu</h1>
+      <h1 className="hero-title">ToneSifu</h1>
         <h2 className="hero-subtitle">Tone training platform</h2>
         <div className='button-container'>
-          
-        <button className="hero-button hero-button-secondary">Log In</button>
-          <button className="hero-button hero-button-primary">Sign Up</button>
+          <LoginButton></LoginButton>
         </div>
       </div>
+      <div className="hero-right">
+        <img className="hero-image" src={heroimg} />
+        
+        </div>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 export default function Training() {
   return (
     <div>
-      <p>bruh</p>
+      <p>Training Page</p>
     </div>
   )
 }
