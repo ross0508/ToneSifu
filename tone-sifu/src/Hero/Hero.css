@@ -1,14 +1,22 @@
 .hero-container {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+  }
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
     background-image: url('../assets/darkbg.png');
     background-size: cover;
     height: 100vh;
     width: 100%;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    align-items: center;
+    scroll-snap-align: start;
+    position: relative;
+    justify-content: center;
 }
 
 .hero-right {
@@ -47,7 +55,7 @@
     height: fit-content;
     border: none;
     margin: 15px;
-    margin-top: 2rem;
+    margin-top: 1rem;
     cursor: pointer;
     border-radius: 10px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
@@ -70,4 +78,36 @@
     margin-right: 10rem;
     border-radius: 10px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.info-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.info-image {
+    width: 40rem;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    margin: 5rem;
+}
+
+.hero-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 2rem;
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
 }

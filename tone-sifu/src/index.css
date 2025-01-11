@@ -14,7 +14,7 @@
   --primary-colour: #000000;
   --secondary-colour: #AED8AC;
   --secondary-colour-lighter: hsl(from var(--secondary-colour) h s calc(l + 5));
-  --highlight-colour: #cc0003;
+  --highlight-colour: #A00;
   --text-colour: #ffffff;
   --text-colour-secondary: #000000;
 }
@@ -27,4 +27,8 @@
 
 body {
   margin: 0px;
+}
+
+.page-scroll {
+  scroll-snap-type: y mandatory;
 }

@@ -1,11 +1,34 @@
-import './Navbar.css'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import LoginButton from '../LoginButton/LoginButton';
+import './Navbar.css';
 
-export default function Navbar() {
+const Navbar = () => {
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (window.scrollY > lastScrollY) {
+      setShow(false); 
+    } else {
+      setShow(true);  
+    }
+
+    setLastScrollY(window.scrollY); 
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNavbar);
+
+    return () => {
+       window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [lastScrollY]);
+
   return (
-    <ul className="navbar-container">
-        <Link to="/" className="navbutton navbutton-primary">Home</Link>
-        <Link to="/Training" className="navbutton navbutton-secondary">Training</Link>
-    </ul>
+        <nav className={`navbar-container active ${show && 'hidden'}`}>
+          <LoginButton></LoginButton>
+        </nav>
   )
 }
+
+export default Navbar;
