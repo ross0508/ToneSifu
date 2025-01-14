@@ -18,9 +18,8 @@ export default function Hero() {
           <div className="hero-right">
             <img className="hero-image" src={heroimg} />
           </div>
-          
         </div>
-        <div className="hero-arrow">
+        <div className="hero-arrow" onClick={() => window.scrollTo({top: window.innerHeight, behavior: 'smooth'})}>
           <h3>Learn more</h3>
           <h3>↓</h3>
         </div>
@@ -35,7 +34,7 @@ export default function Hero() {
         <div className="hero-left">
           <h1 className="hero-title">Info</h1>
           <h2 className="hero-subtitle">How it works</h2>
-          <p className="hero-text">ToneSifu is a platform for practicing your tone recognition. You can listen to a sound and then select the corresponding tone from the options. You can also play the sound again if you need to hear it again. You can also see your progress and compare it to other users.</p>
+          <p className="hero-text">ToneSifu is a platform for practicing your tone recognition. You listen to a word, select the corresponding tone, and then select the correct option. You can also see your progress over time and the areas you struggle with.</p>
           <div className='info-box'>
             <h1>Mandarin</h1>
             <h1>Cantonese</h1>
