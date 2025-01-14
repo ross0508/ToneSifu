@@ -2,8 +2,38 @@ import './Hero.css'
 import heroimg from '../assets/heroimg.jpg'
 import hkimg from '../assets/hkimg.jpg'
 import LoginButton from '../LoginButton/LoginButton'
+import { useState, useEffect } from 'react'
 
 export default function Hero() {
+
+  const [hideArrow, setHideArrow] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+   const controlNavbar = () => {
+      if (window.scrollY > lastScrollY) {
+        setHideArrow(true); 
+      } else {
+        setHideArrow(false);  
+      }
+  
+      setLastScrollY(window.scrollY); 
+    };
+  
+    useEffect(() => {
+      window.addEventListener('scroll', controlNavbar);
+  
+      return () => {
+         window.removeEventListener('scroll', controlNavbar);
+      };
+    }, [lastScrollY]);
+
+  const handleArrowClick = () => {
+    window.scrollTo({top: window.innerHeight, behavior: 'smooth'})
+  }
+
+  
+
+
   return (
     <div className='hero-page'>
       <section className='hero-section'>
@@ -19,7 +49,7 @@ export default function Hero() {
             <img className="hero-image" src={heroimg} />
           </div>
         </div>
-        <div className="hero-arrow" onClick={() => window.scrollTo({top: window.innerHeight, behavior: 'smooth'})}>
+        <div className={`hero-arrow show ${hideArrow && 'hidden'}`} onClick={handleArrowClick}>
           <h3>Learn more</h3>
           <h3>↓</h3>
         </div>

@@ -73,6 +73,10 @@
     scale: 1.03
 }
 
+.hero-button:active {
+    scale: 0.97;
+}
+
 .hero-image {
     width: 40rem;
     margin-right: 10rem;
@@ -112,18 +116,15 @@
     cursor: pointer;
     transform: translateX(-50%)translateY(-0.3rem);
 }
+.hero-arrow:active {
+    transform: translateX(-50%)translateY(0.1rem);
+}
 
 h3 {
     margin: 0;
     padding: 0;
 }
 
-.hero-section {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 .hero-section {
     position: relative;
@@ -141,10 +142,19 @@ h3 {
     justify-content: center;
 }
 
-.parallax {
-    position: relative;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: transform 0.1s, opacity 0.3s;
+}
+
+.show {
+    visibility: visible;
+    opacity: 1;
+    transition: transform 0.1s, opacity 1.5s;
+}
+
+p {
+    
+    max-width: 60ch;
 }

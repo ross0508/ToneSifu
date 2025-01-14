@@ -1,0 +1,13 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-image: url('../assets/darkbg.png');
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-snap-align: start;
+    position: relative;
+    justify-content: center;
+}
