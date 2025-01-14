@@ -1,4 +1,4 @@
-body {
+.training-page {
     display: flex;
     flex-direction: column;
     background-image: url('../assets/darkbg.png');
