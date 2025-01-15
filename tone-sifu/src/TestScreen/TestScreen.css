@@ -1,0 +1,15 @@
+.answer-button {
+    scale: 1.5;
+    margin: 2rem;
+}
+
+.answer-button-correct {
+    background-color: aqua;
+}
+
+
+.answer-button-incorrect {
+    background-color: red;
+}
+
+.answer-button

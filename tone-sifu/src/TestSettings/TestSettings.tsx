@@ -15,7 +15,7 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
     {'jyutping' : 'cou2', 'tone' : 2},
     {'jyutping' : 'dou1', 'tone' : 1},
     {'jyutping' : 'haai4', 'tone' : 4},
-    {'jyutping' : 'tai2', 'tone' : 2},
+    {'jyutping' : 'zyu1', 'tone' : 1},
     {'jyutping' : 'hyun3', 'tone' : 3},
     {'jyutping' : 'ji5', 'tone' : 5},
     {'jyutping' : 'deoi3', 'tone' : 3},
