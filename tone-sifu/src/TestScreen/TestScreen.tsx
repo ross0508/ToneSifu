@@ -41,7 +41,8 @@ export default function TestScreen({ testStateSetter, words, tones }) {
     
     useEffect(() => {
       console.log(currentWord.audio)
-      const audio = new Audio(currentWord.audio);
+      console.log(currentWord.jyutping)
+      const audio = new Audio(currentWord.jyutping + '.mp3');
       audio.play()
     }, [currentWord]);
     
@@ -110,7 +111,6 @@ export default function TestScreen({ testStateSetter, words, tones }) {
 
   return (
     <div>
-      <div>{currentWord.jyutping}</div>
       {sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{tone}</button>)}
       {answered && <button onClick={handleNext}>Next</button>}
       {answered && <>{correct ? <h1>CORRECT</h1> : <h1>INCORRECT</h1>}</>}
