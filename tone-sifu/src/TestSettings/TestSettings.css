@@ -1,15 +1,12 @@
-.checkbox-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width:50%;
-}
-
-.checkbox-grid div {
-    margin: 2rem;
-    margin-left: 5rem;
-    accent-color: var(--highlight-colour);
-}
-
 input {
     scale: 3;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
+    margin-left: 5rem;
 }
