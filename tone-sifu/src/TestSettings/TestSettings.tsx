@@ -2,7 +2,10 @@ import './TestSettings.css'
 import { useState } from 'react'
 import Checkbox from './Checkbox/Checkbox'
 
-export default function TestSettings({ testStateSetter, wordListSetter }) {
+export default function TestSettings({ testStateSetter, wordListSetter, filterList, setFilterList }) {
+
+  //use variable to determine whether mandarin/cantonese database call
+  //possibly filter on backend instead of frontend
 
   const words = [
     {'jyutping' : 'ngo5', 'tone' : 5},
@@ -15,18 +18,34 @@ export default function TestSettings({ testStateSetter, wordListSetter }) {
     {'jyutping' : 'tai2', 'tone' : 2},
     {'jyutping' : 'hyun3', 'tone' : 3},
     {'jyutping' : 'ji5', 'tone' : 5},
-    {'jyutping' : 'deoi3', 'tone' : 3}
+    {'jyutping' : 'deoi3', 'tone' : 3},
+    {'jyutping' : 'daai6', 'tone' : 6},
+    {'jyutping' : 'sai3', 'tone' : 3},
+    {'jyutping' : 'hou2', 'tone' : 2},
+    {'jyutping' : 'zung1', 'tone' : 1},
+    {'jyutping' : 'jit6', 'tone' : 6},
+    {'jyutping' : 'nei5', 'tone' : 5},
+    {'jyutping' : 'cou4', 'tone' : 4},
+    {'jyutping' : 'baat3', 'tone' : 3},
+    {'jyutping' : 'gau2', 'tone' : 2},
+    {'jyutping' : 'maau1', 'tone' : 1},
+    {'jyutping' : 'ng5', 'tone' : 5},
+    {'jyutping' : 'dyun2', 'tone' : 2},
+    {'jyutping' : 'coeng4', 'tone' : 4},
+    {'jyutping' : 'ngoi3', 'tone' : 3}
   ]
-  
-  const [filterList, setFilterList] = useState([]);
 
-  const handleChange = (tone) => {
-    setFilterList([...filterList, tone]);
+  const handleChange = (e, tone) => {
+    if (e.target.checked) {
+      setFilterList([...filterList, tone]);
+    } else {
+      setFilterList(filterList.filter(item => item != tone));
+    }
   };
 
   const handleSubmit = () => {
     if (filterList.length == 0) {
-      console.log("error no select") // Put actual message on screen here instead
+      console.log("error no select"); // Put actual message on screen here instead
     } else {
       testStateSetter(1);
       wordListSetter(words.filter(word => filterList.includes(word.tone)));
