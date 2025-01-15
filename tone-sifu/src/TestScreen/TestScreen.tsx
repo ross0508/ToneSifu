@@ -17,13 +17,69 @@ export default function TestScreen({ testStateSetter, words, tones }) {
 
     useEffect(() => {
       setCurrentWord(words[Math.floor(Math.random()*words.length)]);
-      if (index >= 5) {
+      if (index >= 10) {
         testStateSetter(2)
       }
     },
       [index])
+
+
+
+    //Keyboard Input
+
+    useEffect(() => {
+      const handleKeyDown = (e) => {
+        handleKey(e);
+      };
     
-    const sortedTones = tones.sort();
+      window.addEventListener("keydown", handleKeyDown);
+    
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    });
+    
+    useEffect(() => {
+      console.log(currentWord.audio)
+      const audio = new Audio(currentWord.audio);
+      audio.play()
+    }, [currentWord]);
+    
+    const handleKey = (e) => {
+      switch (e.code) {
+        case "Digit1":
+          handleAnswer(0, 1)
+          break;
+        case "Digit2":
+            handleAnswer(1, 2)
+          break;
+        case "Digit3":
+          handleAnswer(2, 3)
+          break;
+        case "Digit4":
+          handleAnswer(3, 4)
+          break;
+        case "Digit5":
+          handleAnswer(4, 5)
+          break;
+        case "Digit6":
+          handleAnswer(5, 6)
+          break;
+        case "Space":
+          if (answered) {
+            handleNext()
+          }
+          break;
+        case "Enter":
+          if (answered) {
+            handleNext()
+          }
+          break;
+      }
+    }
+
+    
+    const sortedTones = tones.sort(); // Move this so it doesnt run every refresh
 
     const handleAnswer = (i, tone) => {
       if (!answered) {
@@ -35,19 +91,21 @@ export default function TestScreen({ testStateSetter, words, tones }) {
           setCorrect(false)
           buttonRef.current[i].current.classList.add("answer-button-incorrect")
         }
-
         setAnswered(true);
       }
     }
 
     const handleNext = () => {
-      setIndex((i) => i+1);
-      setAnswered(false);
-      if (correct) {
-        buttonRef.current[selection].current.classList.remove("answer-button-correct")
-      } else {
-        buttonRef.current[selection].current.classList.remove("answer-button-incorrect")
+      if (answered) {
+        setIndex((i) => i+1);
+        setAnswered(false);
+        if (correct) {
+          buttonRef.current[selection].current.classList.remove("answer-button-correct")
+        } else {
+          buttonRef.current[selection].current.classList.remove("answer-button-incorrect")
+        }
       }
+      
     }
 
   return (
@@ -55,7 +113,7 @@ export default function TestScreen({ testStateSetter, words, tones }) {
       <div>{currentWord.jyutping}</div>
       {sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{tone}</button>)}
       {answered && <button onClick={handleNext}>Next</button>}
-      {correct ? <h1>CORRECT</h1> : <h1>INCORRECT</h1>}
+      {answered && <>{correct ? <h1>CORRECT</h1> : <h1>INCORRECT</h1>}</>}
     </div>
   )
 }
