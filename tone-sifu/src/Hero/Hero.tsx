@@ -40,7 +40,7 @@ export default function Hero() {
         <div  className="hero-container">
           <div className="hero-left">
             <h1 className="hero-title">ToneSifu</h1>
-            <h2 className="hero-subtitle">Tone training platform</h2>
+            <h2 className="hero-subtitle">Chinese tone trainer</h2>
             <div className='button-container'>
               <LoginButton></LoginButton>
             </div>

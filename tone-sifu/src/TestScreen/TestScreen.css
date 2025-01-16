@@ -1,3 +1,9 @@
+.test-screen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .answer-button {
     margin: 3rem;
     width: fit-content;
@@ -17,7 +23,7 @@
 }
 
 .answer-button-correct {
-    background-color: var(--secondary-colour);
+    background-color: var(--correct-colour);
 }
 
 

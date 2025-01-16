@@ -13,10 +13,10 @@ export default function TestScreen({ testStateSetter, words, tones }) {
     const buttonRef = useRef([])
 
     buttonRef.current = tones.map((element, i) => buttonRef.current[i] ?? createRef());
-
+    const audio = new Audio(currentWord.jyutping + '.mp3');
 
     useEffect(() => {
-      setCurrentWord(words[Math.floor(Math.random()*words.length)]);
+      setCurrentWord(words[Math.floor(Math.random()*words.length)]); // Remove word if already used
       if (index >= 10) {
         testStateSetter(2)
       }
@@ -40,7 +40,7 @@ export default function TestScreen({ testStateSetter, words, tones }) {
     });
     
     useEffect(() => {
-      const audio = new Audio(currentWord.jyutping + '.mp3');
+      
       audio.play()
     }, [currentWord]);
     
@@ -73,6 +73,9 @@ export default function TestScreen({ testStateSetter, words, tones }) {
           if (answered) {
             handleNext()
           }
+          break;
+        case "KeyR":
+          audio.play()
           break;
       }
     }
@@ -110,7 +113,8 @@ export default function TestScreen({ testStateSetter, words, tones }) {
     }
 
   return (
-    <div>
+    <div className='test-screen-container'>
+      <button onClick={() => audio.play()}>Play</button>
       {sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{tone}</button>)}
       {answered && <button onClick={handleNext}>Next</button>}
       {answered && <>{correct ? <h1>CORRECT</h1> : <h1>INCORRECT</h1>}</>}
