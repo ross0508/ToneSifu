@@ -1,7 +1,8 @@
 import './TestSettings.css'
 import Checkbox from './Checkbox/Checkbox'
+import { useState } from 'react'
 
-export default function TestSettings({ testStateSetter, wordListSetter, filterList, setFilterList }) {
+export default function TestSettings({ testStateSetter, wordListSetter, filterList, setFilterList, setLanguage, language }) {
 
   //use variable to determine whether mandarin/cantonese database call
   //possibly filter on backend instead of frontend
@@ -56,20 +57,44 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
       console.log("error no select"); // Put actual message on screen here instead
     } else {
       testStateSetter(1);
-      wordListSetter(words.filter(word => filterList.includes(word.tone)));
+      wordListSetter(words.filter(word => filterList.includes(word.tone))); // Check for error when unchecking then changing language
+      console.log(language)
     } 
   }
 
+  const handleChangeLanguage = (newLanguage) => {
+    const toneArray = {
+      'cmn' : [1, 2, 3, 4],
+      'yue' : [1, 2, 3, 4, 5, 6]
+    }
+    setLanguage(newLanguage)
+    setFilterList(toneArray[newLanguage]);
+  }
+
   return (
-    <div className='checkbox-container'>
+    <>
+      <button onClick={() => handleChangeLanguage('cmn')}>Mandarin</button> 
+      <button onClick={() => handleChangeLanguage('yue')}>Cantonese</button>
+      {language == 'yue' && <div className='checkbox-container'>
         <Checkbox setter={handleChange} tone={1} />
         <Checkbox setter={handleChange} tone={2} />
         <Checkbox setter={handleChange} tone={3} />
         <Checkbox setter={handleChange} tone={4} />
         <Checkbox setter={handleChange} tone={5} />
         <Checkbox setter={handleChange} tone={6} />
+      
+        <button onClick={handleSubmit}>Submit</button>
+      </div>
+      }
+      {language == 'cmn' && <div className='checkbox-container'>
+        <Checkbox setter={handleChange} tone={1} />
+        <Checkbox setter={handleChange} tone={2} />
+        <Checkbox setter={handleChange} tone={3} />
+        <Checkbox setter={handleChange} tone={4} />
 
         <button onClick={handleSubmit}>Submit</button>
-    </div>
+      </div>
+      }
+    </>
   )
 }

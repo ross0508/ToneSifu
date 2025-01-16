@@ -16,7 +16,7 @@ export default function TestScreen({ testStateSetter, words, tones }) {
     const audio = new Audio(currentWord.jyutping + '.mp3');
 
     useEffect(() => {
-      setCurrentWord(words[Math.floor(Math.random()*words.length)]); // Remove word if already used
+      setCurrentWord(words[Math.floor(Math.random()*words.length)]); // Remove word if already used, repeating words causes audio not to play
       if (index >= 10) {
         testStateSetter(2)
       }
