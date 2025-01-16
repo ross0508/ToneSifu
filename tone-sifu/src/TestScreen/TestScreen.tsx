@@ -89,6 +89,7 @@ export default function TestScreen({ testStateSetter, words, tones }) {
         } else {
           setCorrect(false)
           buttonRef.current[i].current.classList.add("answer-button-incorrect")
+          buttonRef.current[sortedTones.findIndex((n) => n == currentWord.tone)].current.classList.add("answer-button-correct")
         }
         setAnswered(true);
       }
@@ -102,6 +103,7 @@ export default function TestScreen({ testStateSetter, words, tones }) {
           buttonRef.current[selection].current.classList.remove("answer-button-correct")
         } else {
           buttonRef.current[selection].current.classList.remove("answer-button-incorrect")
+          buttonRef.current[sortedTones.findIndex((n) => n == currentWord.tone)].current.classList.remove("answer-button-correct")
         }
       }
       
