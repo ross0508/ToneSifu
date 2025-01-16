@@ -40,8 +40,6 @@ export default function TestScreen({ testStateSetter, words, tones }) {
     });
     
     useEffect(() => {
-      console.log(currentWord.audio)
-      console.log(currentWord.jyutping)
       const audio = new Audio(currentWord.jyutping + '.mp3');
       audio.play()
     }, [currentWord]);
@@ -49,22 +47,22 @@ export default function TestScreen({ testStateSetter, words, tones }) {
     const handleKey = (e) => {
       switch (e.code) {
         case "Digit1":
-          handleAnswer(0, 1)
+          handleAnswer(sortedTones.findIndex((n) => n == 1), 1) // Probably a cleaner way of doing
           break;
         case "Digit2":
-            handleAnswer(1, 2)
+            handleAnswer(sortedTones.findIndex((n) => n == 2), 2)
           break;
         case "Digit3":
-          handleAnswer(2, 3)
+          handleAnswer(sortedTones.findIndex((n) => n == 3), 3)
           break;
         case "Digit4":
-          handleAnswer(3, 4)
+          handleAnswer(sortedTones.findIndex((n) => n == 4), 4)
           break;
         case "Digit5":
-          handleAnswer(4, 5)
+          handleAnswer(sortedTones.findIndex((n) => n == 5), 5)
           break;
         case "Digit6":
-          handleAnswer(5, 6)
+          handleAnswer(sortedTones.findIndex((n) => n == 6), 6)
           break;
         case "Space":
           if (answered) {

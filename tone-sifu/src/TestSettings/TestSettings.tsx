@@ -16,7 +16,31 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
     {'jyutping' : 'zi1', 'tone' : 1},
     {'jyutping' : 'si3', 'tone' : 3},
     {'jyutping' : 'daa2', 'tone' : 2},
-    {'jyutping' : 'saai1', 'tone' : 1}
+    {'jyutping' : 'saai1', 'tone' : 1},
+    {'jyutping' : 'pin1', 'tone' : 1},
+    {'jyutping' : 'ji2', 'tone' : 2},
+    {'jyutping' : 'so1', 'tone' : 1},
+    {'jyutping' : 'fau2', 'tone' : 2},
+    {'jyutping' : 'hin2', 'tone' : 2},
+    {'jyutping' : 'leon4', 'tone' : 4},
+    {'jyutping' : 'ming4', 'tone' : 4},
+    {'jyutping' : 'duk6', 'tone' : 6},
+    {'jyutping' : 'dung6', 'tone' : 6},
+    {'jyutping' : 'man5', 'tone' : 5},
+    {'jyutping' : 'maa6', 'tone' : 6},
+    {'jyutping' : 'seoi5', 'tone' : 5},
+    {'jyutping' : 'tai4', 'tone' : 4},
+    {'jyutping' : 'ngo6', 'tone' : 6},
+    {'jyutping' : 'lek1', 'tone' : 1},
+    {'jyutping' : 'gaak3', 'tone' : 3},
+    {'jyutping' : 'cyun2', 'tone' : 2},
+    {'jyutping' : 'ci3', 'tone' : 3},
+    {'jyutping' : 'leoi6', 'tone' : 6},
+    {'jyutping' : 'mong5', 'tone' : 5},
+    {'jyutping' : 'mou5', 'tone' : 5},
+    {'jyutping' : 'san4', 'tone' : 4},
+    {'jyutping' : 'soek3', 'tone' : 3},
+    {'jyutping' : 'caan4', 'tone' : 4}
   ]
 
   const handleChange = (e, tone) => {
