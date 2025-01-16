@@ -16,7 +16,7 @@ export default function Training() {
     <div className="training-page">
       <p>Training Page</p>
       {testState==0 && <TestSettings testStateSetter={setTestState} wordListSetter={setWordList} filterList={filterList} setFilterList={setFilterList} setLanguage={setLanguage} language={language}></TestSettings>}
-      {testState==1 && <TestScreen testStateSetter={setTestState} words={wordList} tones={filterList}></TestScreen>}
+      {testState==1 && <TestScreen testStateSetter={setTestState} words={wordList} tones={filterList} language={language}></TestScreen>}
       {testState==2 && <h1>End</h1>}
     </div>
   )

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, createRef } from 'react'
 import './TestScreen.css'
 
-export default function TestScreen({ testStateSetter, words, tones }) {
+export default function TestScreen({ testStateSetter, words, tones, language }) {
 
     const [index, setIndex] = useState(0)
     const [currentWord, setCurrentWord] = useState({})
@@ -9,6 +9,7 @@ export default function TestScreen({ testStateSetter, words, tones }) {
     const [correct, setCorrect] = useState(false)
     const [selection, setSelection] = useState(0)
 
+    const cmnToneArrows = ['', 'ā', 'á', 'ǎ', 'à']
 
     const buttonRef = useRef([])
 
@@ -112,10 +113,11 @@ export default function TestScreen({ testStateSetter, words, tones }) {
       
     }
 
-  return (
-    <div className='test-screen-container'>
+  return ( // Show arrows for mandarin
+    <div className='test-screen-container'> 
       <button onClick={() => audio.play()}>Play</button>
-      {sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{tone}</button>)}
+      {language == 'cmn' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{cmnToneArrows[tone]}</button>)}
+      {language == 'yue' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{tone}</button>)}
       {answered && <button onClick={handleNext}>Next</button>}
       {answered && <>{correct ? <h1>CORRECT</h1> : <h1>INCORRECT</h1>}</>}
     </div>

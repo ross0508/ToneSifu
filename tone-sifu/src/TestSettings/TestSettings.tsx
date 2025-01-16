@@ -7,7 +7,7 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
   //use variable to determine whether mandarin/cantonese database call
   //possibly filter on backend instead of frontend
 
-  const words = [
+  const yueWords = [
     {'jyutping' : 'zyu1', 'tone' : 1},
     {'jyutping' : 'ceoi1', 'tone' : 1},
     {'jyutping' : 'cin4', 'tone' : 4},
@@ -44,6 +44,11 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
     {'jyutping' : 'caan4', 'tone' : 4}
   ]
 
+  const cmnWords = [
+    {'jyutping' : 'shuǐ', 'tone' : 3},
+    {'jyutping' : 'rén', 'tone' : 2},
+  ]
+
   const handleChange = (e, tone) => {
     if (e.target.checked) {
       setFilterList([...filterList, tone]);
@@ -53,12 +58,16 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
   };
 
   const handleSubmit = () => {
-    if (filterList.length == 0) {
-      console.log("error no select"); // Put actual message on screen here instead
+    console.log(filterList)
+    if (filterList.length < 2) {
+      alert("Please select at least 2 tones.");
     } else {
       testStateSetter(1);
-      wordListSetter(words.filter(word => filterList.includes(word.tone))); // Check for error when unchecking then changing language
-      console.log(language)
+      if (language == 'cmn') {
+        wordListSetter(cmnWords.filter(word => filterList.includes(word.tone))); // Check for error when unchecking then changing language
+      } else if (language == 'yue') {
+        wordListSetter(yueWords.filter(word => filterList.includes(word.tone))); // Check for error when unchecking then changing language
+      }
     } 
   }
 
