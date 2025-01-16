@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, createRef } from 'react'
 import './TestScreen.css'
 
-export default function TestScreen({ testStateSetter, words, tones, language }) {
+export default function TestScreen({ testStateSetter, words, tones, language, questionLog, setQuestionLog }) {
 
     const [index, setIndex] = useState(0)
     const [currentWord, setCurrentWord] = useState({})
@@ -26,7 +26,7 @@ export default function TestScreen({ testStateSetter, words, tones, language }) 
 
 
 
-    //Keyboard Input
+    // Keyboard Input
 
     useEffect(() => {
       const handleKeyDown = (e) => {
@@ -101,6 +101,11 @@ export default function TestScreen({ testStateSetter, words, tones, language }) 
 
     const handleNext = () => {
       if (answered) {
+        setQuestionLog([...questionLog, {
+          'jyutping' : currentWord.jyutping,
+          'correct' : correct
+        }
+        ]); // Add current word to list of questions asked
         setIndex((i) => i+1);
         setAnswered(false);
         if (correct) {

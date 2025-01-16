@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import LoginButton from '../LoginButton/LoginButton';
-import './Navbar.css';
+import './HeroNavbar.css';
 
-const Navbar = () => {
+const HeroNavbar = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -31,4 +31,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar;
+export default HeroNavbar;

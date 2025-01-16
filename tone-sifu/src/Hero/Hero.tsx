@@ -3,6 +3,7 @@ import heroimg from '../assets/heroimg.jpg'
 import hkimg from '../assets/hkimg.jpg'
 import LoginButton from '../LoginButton/LoginButton'
 import { useState, useEffect } from 'react'
+import HeroNavbar from "../HeroNavbar/HeroNavbar"
 
 export default function Hero() {
 
@@ -35,43 +36,46 @@ export default function Hero() {
 
 
   return (
-    <div className='hero-page'>
-      <section className='hero-section'>
-        <div  className="hero-container">
-          <div className="hero-left">
-            <h1 className="hero-title">ToneSifu</h1>
-            <h2 className="hero-subtitle">Chinese tone trainer</h2>
-            <div className='button-container'>
-              <LoginButton></LoginButton>
+    <>
+      <HeroNavbar />
+      <div className='hero-page'>
+        <section className='hero-section'>
+          <div  className="hero-container">
+            <div className="hero-left">
+              <h1 className="hero-title">ToneSifu</h1>
+              <h2 className="hero-subtitle">Chinese tone trainer</h2>
+              <div className='button-container'>
+                <LoginButton></LoginButton>
+              </div>
+            </div>
+            <div className="hero-right">
+              <img className="hero-image" src={heroimg} />
             </div>
           </div>
-          <div className="hero-right">
-            <img className="hero-image" src={heroimg} />
+          <div className={`hero-arrow show ${hideArrow && 'hidden'}`} onClick={handleArrowClick}>
+            <h3>Learn more</h3>
+            <h3>↓</h3>
           </div>
-        </div>
-        <div className={`hero-arrow show ${hideArrow && 'hidden'}`} onClick={handleArrowClick}>
-          <h3>Learn more</h3>
-          <h3>↓</h3>
-        </div>
-      </section>
-      
+        </section>
+        
 
-      <section className="hero-section">
-        <div className="hero-container">
-        <div className="hero-right">
-          <img className="info-image" src={hkimg} />
-        </div>
-        <div className="hero-left">
-          <h1 className="hero-title">Info</h1>
-          <h2 className="hero-subtitle">How it works</h2>
-          <p className="hero-text">ToneSifu is a platform for practicing your tone recognition. You listen to a word, select the corresponding tone, and then select the correct option. You can also see your progress over time and the areas you struggle with.</p>
-          <div className='info-box'>
-            <h1>Mandarin</h1>
-            <h1>Cantonese</h1>
+        <section className="hero-section">
+          <div className="hero-container">
+          <div className="hero-right">
+            <img className="info-image" src={hkimg} />
           </div>
-        </div>
-        </div>
-      </section>
-    </div>
+          <div className="hero-left">
+            <h1 className="hero-title">Info</h1>
+            <h2 className="hero-subtitle">How it works</h2>
+            <p className="hero-text">ToneSifu is a platform for practicing your tone recognition. You listen to a word, select the corresponding tone, and then select the correct option. You can also see your progress over time and the areas you struggle with.</p>
+            <div className='info-box'>
+              <h1>Mandarin</h1>
+              <h1>Cantonese</h1>
+            </div>
+          </div>
+          </div>
+        </section>
+      </div>
+    </>
   )
 }
