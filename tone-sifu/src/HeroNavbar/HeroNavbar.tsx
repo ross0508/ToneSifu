@@ -12,7 +12,6 @@ const HeroNavbar = () => {
     } else {
       setShow(true);  
     }
-
     setLastScrollY(window.scrollY); 
   };
 

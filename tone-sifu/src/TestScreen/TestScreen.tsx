@@ -82,7 +82,7 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
     }
 
     
-    const sortedTones = tones.sort(); // Move this so it doesnt run every refresh
+    const sortedTones = tones.sort(); // Maybe move this so it doesnt run every refresh
 
     const handleAnswer = (i, tone) => {
       if (!answered) {
@@ -120,11 +120,13 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
 
   return ( // Show arrows for mandarin
     <div className='test-screen-container'> 
-      <button onClick={() => audio.play()}>Play</button>
-      {language == 'cmn' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{cmnToneArrows[tone]}</button>)}
-      {language == 'yue' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{tone}</button>)}
-      {answered && <button onClick={handleNext}>Next</button>}
-      {answered && <>{correct ? <h1>CORRECT</h1> : <h1>INCORRECT</h1>}</>}
+      <button className='play-next-button' onClick={() => audio.play()}>Play</button>
+      <div className='answer-button-container'>
+        {language == 'cmn' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{cmnToneArrows[tone]}</button>)}
+        {language == 'yue' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{tone}</button>)}
+        </div>
+        {answered  && <button className='play-next-button' onClick={handleNext}>Next</button>}
+        {answered && <>{correct ? <h1>CORRECT</h1> : <h1>INCORRECT</h1>}</>}
     </div>
   )
 }

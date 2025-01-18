@@ -81,7 +81,7 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
   }
 
   return (
-    <>
+    <div className='test-settings-container'>
       <button onClick={() => handleChangeLanguage('cmn')}>Mandarin</button> 
       <button onClick={() => handleChangeLanguage('yue')}>Cantonese</button>
       {language == 'yue' && <div className='checkbox-container'>
@@ -104,6 +104,6 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
         <button onClick={handleSubmit}>Submit</button>
       </div>
       }
-    </>
+    </div>
   )
 }
