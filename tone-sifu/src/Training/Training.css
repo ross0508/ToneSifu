@@ -1,6 +1,7 @@
 .training-page {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-image: url('../assets/darkbg.png');
     background-size: cover;
     height: 100vh;

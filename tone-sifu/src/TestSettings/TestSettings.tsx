@@ -91,8 +91,6 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
         <Checkbox setter={handleChange} tone={4} />
         <Checkbox setter={handleChange} tone={5} />
         <Checkbox setter={handleChange} tone={6} />
-      
-        <button onClick={handleSubmit}>Submit</button>
       </div>
       }
       {language == 'cmn' && <div className='checkbox-container'>
@@ -100,10 +98,9 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
         <Checkbox setter={handleChange} tone={2} />
         <Checkbox setter={handleChange} tone={3} />
         <Checkbox setter={handleChange} tone={4} />
-
-        <button onClick={handleSubmit}>Submit</button>
       </div>
       }
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   )
 }

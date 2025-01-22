@@ -120,13 +120,12 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
 
   return ( // Show arrows for mandarin
     <div className='test-screen-container'> 
-      <button className='play-next-button' onClick={() => audio.play()}>Play</button>
+      <button className='play-next-button play-button' onClick={() => audio.play()}>PLAY</button>
+      {answered  && <button className='play-next-button next-button' onClick={handleNext}>Next</button>}
       <div className='answer-button-container'>
         {language == 'cmn' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{cmnToneArrows[tone]}</button>)}
         {language == 'yue' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{tone}</button>)}
-        </div>
-        {answered  && <button className='play-next-button' onClick={handleNext}>Next</button>}
-        {answered && <>{correct ? <h1>CORRECT</h1> : <h1>INCORRECT</h1>}</>}
+      </div>
     </div>
   )
 }
