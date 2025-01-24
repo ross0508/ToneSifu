@@ -1,0 +1,11 @@
+.profile-container {
+    background-color: rgb(139, 0, 0);
+    height: 60rem;
+    padding: 5rem;
+}
+
+.profile-information-container {
+    margin: 5rem;
+    display: flex;
+    direction: column;
+}

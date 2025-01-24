@@ -24,7 +24,7 @@ const HeroNavbar = () => {
   }, [lastScrollY]);
 
   return (
-        <nav className={`navbar-container active ${show && 'hidden'}`}>
+        <nav className={`hero-navbar-container active ${show && 'hidden'}`}>
           <LoginButton></LoginButton>
         </nav>
   )

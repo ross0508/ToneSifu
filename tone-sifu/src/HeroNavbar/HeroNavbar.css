@@ -1,4 +1,4 @@
-.navbar-container {
+.hero-navbar-container {
     width: 100%;
     height: fit-content;
     margin: 0;
@@ -11,7 +11,7 @@
     z-index: 100;
 }
 
-.navbutton {
+.hero-navbutton {
     width: fit-content;
     height: fit-content;
     border: none;
@@ -23,12 +23,12 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.navbutton-primary {
+.hero-navbutton-primary {
     background-color: var(--highlight-colour);
     color: #f5f5f5;
 }
 
-.navbutton-secondary {
+.hero-navbutton-secondary {
     background-color: var(--secondary-colour);
     color: #f5f5f5;
 }
@@ -45,7 +45,7 @@
     transition: 0.2s;
 }
 
-show {
+.show {
     visibility: visible;
     opacity: 1;
     transition: 5s;
