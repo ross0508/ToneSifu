@@ -6,14 +6,24 @@ export default function Profile() {
 
     const { user, isAuthenticated } = useAuth0();
 
-    console.log(user)
+    if (!isAuthenticated) {
+      return (
+        <>
+          <FullNavbar />
+          <div className="profile-container">
+              
+            <h1>loading</h1>
+          </div>
+        </>
+      )
+    }
 
   return (
     <>
       <FullNavbar />
       <div className="profile-container">
         <div className="profile-information-container">
-          <h1>Username</h1>
+          <h1>Name</h1>
           <p>{user?.name}</p>
         </div>
       </div>

@@ -1,8 +1,11 @@
 import './TestSettings.css'
-import Checkbox from './Checkbox/Checkbox'
 import { useState } from 'react'
+import Checkbox from './Checkbox/Checkbox'
+import SelectLanguage from './SelectLanguage/SelectLanguage'
 
 export default function TestSettings({ testStateSetter, wordListSetter, filterList, setFilterList, setLanguage, language }) {
+
+  const [settingsPage, setSettingsPage] = useState(0)
 
   //use variable to determine whether mandarin/cantonese database call
   //possibly filter on backend instead of frontend
@@ -71,36 +74,39 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
     } 
   }
 
-  const handleChangeLanguage = (newLanguage) => {
+  /* const handleChangeLanguage = (newLanguage) => {
     const toneArray = {
       'cmn' : [1, 2, 3, 4],
       'yue' : [1, 2, 3, 4, 5, 6]
     }
     setLanguage(newLanguage)
     setFilterList(toneArray[newLanguage]);
-  }
+  } */
 
   return (
-    <div className='test-settings-container'>
-      <button onClick={() => handleChangeLanguage('cmn')}>Mandarin</button> 
-      <button onClick={() => handleChangeLanguage('yue')}>Cantonese</button>
-      {language == 'yue' && <div className='checkbox-container'>
-        <Checkbox setter={handleChange} tone={1} />
-        <Checkbox setter={handleChange} tone={2} />
-        <Checkbox setter={handleChange} tone={3} />
-        <Checkbox setter={handleChange} tone={4} />
-        <Checkbox setter={handleChange} tone={5} />
-        <Checkbox setter={handleChange} tone={6} />
-      </div>
-      }
-      {language == 'cmn' && <div className='checkbox-container'>
-        <Checkbox setter={handleChange} tone={1} />
-        <Checkbox setter={handleChange} tone={2} />
-        <Checkbox setter={handleChange} tone={3} />
-        <Checkbox setter={handleChange} tone={4} />
-      </div>
-      }
-      <button onClick={handleSubmit}>Submit</button>
-    </div>
+    <>
+      {settingsPage == 0 && <SelectLanguage setLanguage={setLanguage} setSettingsPage={setSettingsPage} setFilterList={setFilterList}></SelectLanguage>}
+
+      {settingsPage == 1 && <div className='test-settings-container'>
+        <button onClick={() => setSettingsPage(0)}>Back</button>
+        {language == 'yue' && <div className='checkbox-container'>
+          <Checkbox setter={handleChange} tone={1} />
+          <Checkbox setter={handleChange} tone={2} />
+          <Checkbox setter={handleChange} tone={3} />
+          <Checkbox setter={handleChange} tone={4} />
+          <Checkbox setter={handleChange} tone={5} />
+          <Checkbox setter={handleChange} tone={6} />
+        </div>
+        }
+        {language == 'cmn' && <div className='checkbox-container'>
+          <Checkbox setter={handleChange} tone={1} />
+          <Checkbox setter={handleChange} tone={2} />
+          <Checkbox setter={handleChange} tone={3} />
+          <Checkbox setter={handleChange} tone={4} />
+        </div>
+        }
+        <button onClick={handleSubmit}>Submit</button>
+      </div>}
+    </>
   )
 }

@@ -1,0 +1,25 @@
+.select-language-container {
+    margin-top: 20rem;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.language-card {
+    font-size: 2rem;
+    background-color: gray;
+    border: none;
+    border-radius: 10px;
+    padding: 2rem;
+    text-decoration: none;
+    transition: 0.1s;
+}
+
+.language-card:hover {
+    scale: 1.03;
+    background-color: var(--highlight-colour);
+}
+
+.language-card:active {
+    scale: 0.97;
+}

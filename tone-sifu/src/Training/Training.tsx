@@ -4,6 +4,7 @@ import { useState } from 'react'
 import TestScreen from "../TestScreen/TestScreen"
 import Results from "../Results/Results"
 import FullNavbar from "../FullNavbar/FullNavbar"
+import SelectLanguage from "../TestSettings/SelectLanguage/SelectLanguage"
 
 export default function Training() {
 

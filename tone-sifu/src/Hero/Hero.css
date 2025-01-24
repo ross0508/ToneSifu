@@ -154,7 +154,13 @@ h3 {
     transition: transform 0.1s, opacity 1.5s;
 }
 
-p {
+.hero-text {
     text-align: center;
     max-width: 60ch;
+}
+
+.translucent-box {
+    background-color: rgb(0, 0, 0, 50%);
+    border-radius: 10px;
+    padding-bottom: 4rem;
 }
