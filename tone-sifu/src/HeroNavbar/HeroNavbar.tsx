@@ -25,7 +25,7 @@ const HeroNavbar = () => {
 
   return (
         <nav className={`hero-navbar-container active ${show && 'hidden'}`}>
-          <LoginButton></LoginButton>
+          <LoginButton type="hero-button"></LoginButton>
         </nav>
   )
 }
