@@ -1,6 +1,7 @@
 import FullNavbar from "../FullNavbar/FullNavbar"
 import { useAuth0 } from "@auth0/auth0-react"
 import './Profile.css'
+import LineGraph from "./LineGraph/LineGraph";
 
 export default function Profile() {
 
@@ -25,6 +26,9 @@ export default function Profile() {
         <div className="profile-information-container">
           <h1>Name</h1>
           <p>{user?.name}</p>
+        </div>
+        <div className="graph-container">
+          <LineGraph></LineGraph>
         </div>
       </div>
     </>
