@@ -105,7 +105,8 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
       if (answered) {
         setQuestionLog([...questionLog, {
           'romanization' : currentWord.romanization,
-          'correct' : correct
+          'honzi' : currentWord.honzi,
+          'correct' : correct,
         }
         ]);
         setIndex((i) => i+1);
@@ -128,8 +129,6 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
         {language == 'cmn' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{cmnToneArrows[tone]}</button>)}
         {language == 'yue' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{tone}</button>)}
       </div>
-      
-      <div>{currentWord.romanization}</div>
     </div>
   )
 }
