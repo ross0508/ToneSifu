@@ -2,6 +2,7 @@ import './TestSettings.css'
 import { useState } from 'react'
 import Checkbox from './Checkbox/Checkbox'
 import SelectLanguage from './SelectLanguage/SelectLanguage'
+import axios from 'axios'
 
 export default function TestSettings({ testStateSetter, wordListSetter, filterList, setFilterList, setLanguage, language }) {
 
@@ -60,17 +61,28 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
     }
   };
 
-  const handleSubmit = () => {
-    console.log(filterList)
+  const getBackend = async () => {
+    try {
+      const response = await axios({
+        method: "GET",
+        url: `http://localhost:8080/words/${language}/random/10`,  // Change so test length can be customised
+        params: { 
+          tones: filterList  // Send as query parameters
+        }
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching data from backend:", error);
+    }
+  }
+
+  const handleSubmit = async () => {
     if (filterList.length < 2) {
       alert("Please select at least 2 tones.");
     } else {
+      const wordsFromBackend = await getBackend()
+      wordListSetter(wordsFromBackend);
       testStateSetter(1);
-      if (language == 'cmn') {
-        wordListSetter(cmnWords.filter(word => filterList.includes(word.tone)));
-      } else if (language == 'yue') {
-        wordListSetter(yueWords.filter(word => filterList.includes(word.tone)));
-      }
     } 
   }
 

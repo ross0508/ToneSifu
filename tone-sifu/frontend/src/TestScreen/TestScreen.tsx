@@ -14,7 +14,7 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
     const buttonRef = useRef([])
 
     buttonRef.current = tones.map((element, i) => buttonRef.current[i] ?? createRef());
-    const audio = new Audio(currentWord.jyutping + '.mp3');
+    const audio = new Audio(currentWord.romanization + '.mp3');
 
     useEffect(() => {
       setCurrentWord(words[Math.floor(Math.random()*words.length)]); // Remove word if already used, repeating words causes audio not to play
@@ -41,7 +41,7 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
     });
     
     useEffect(() => {
-      
+      console.log(currentWord)
       audio.play()
     }, [currentWord]);
     
@@ -102,10 +102,10 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
     const handleNext = () => {
       if (answered) {
         setQuestionLog([...questionLog, {
-          'jyutping' : currentWord.jyutping,
+          'romanization' : currentWord.romanization,
           'correct' : correct
         }
-        ]); // Add current word to list of questions asked
+        ]);
         setIndex((i) => i+1);
         setAnswered(false);
         if (correct) {
