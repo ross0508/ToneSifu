@@ -14,10 +14,9 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
     const buttonRef = useRef([])
 
     buttonRef.current = tones.map((element, i) => buttonRef.current[i] ?? createRef());
-    const audio = new Audio(currentWord.romanization + '.mp3');
 
     useEffect(() => {
-      setCurrentWord(words[Math.floor(Math.random()*words.length)]); // Remove word if already used, repeating words causes audio not to play
+      setCurrentWord(words[index]); // Remove word if already used, repeating words causes audio not to play
       if (index >= 10) {
         testStateSetter(2)
       }
@@ -42,6 +41,8 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
     
     useEffect(() => {
       console.log(currentWord)
+      
+      const audio = new Audio(currentWord.romanization + '.mp3');
       audio.play()
     }, [currentWord]);
     
@@ -76,6 +77,7 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
           }
           break;
         case "KeyR":
+          const audio = new Audio(currentWord.romanization + '.mp3');
           audio.play()
           break;
       }
@@ -126,6 +128,8 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
         {language == 'cmn' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{cmnToneArrows[tone]}</button>)}
         {language == 'yue' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{tone}</button>)}
       </div>
+      
+      <div>{currentWord.romanization}</div>
     </div>
   )
 }
