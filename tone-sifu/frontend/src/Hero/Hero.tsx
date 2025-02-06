@@ -33,9 +33,6 @@ export default function Hero() {
     window.scrollTo({top: window.innerHeight, behavior: 'smooth'})
   }
 
-  
-
-
   return (
     <>
       <HeroNavbar />

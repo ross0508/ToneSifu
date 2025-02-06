@@ -67,21 +67,12 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
     } else {
       testStateSetter(1);
       if (language == 'cmn') {
-        wordListSetter(cmnWords.filter(word => filterList.includes(word.tone))); // Check for error when unchecking then changing language
+        wordListSetter(cmnWords.filter(word => filterList.includes(word.tone)));
       } else if (language == 'yue') {
-        wordListSetter(yueWords.filter(word => filterList.includes(word.tone))); // Check for error when unchecking then changing language
+        wordListSetter(yueWords.filter(word => filterList.includes(word.tone)));
       }
     } 
   }
-
-  /* const handleChangeLanguage = (newLanguage) => {
-    const toneArray = {
-      'cmn' : [1, 2, 3, 4],
-      'yue' : [1, 2, 3, 4, 5, 6]
-    }
-    setLanguage(newLanguage)
-    setFilterList(toneArray[newLanguage]);
-  } */
 
   return (
     <>

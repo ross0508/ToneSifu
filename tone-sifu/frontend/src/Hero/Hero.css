@@ -160,13 +160,6 @@ h3 {
     max-width: 60ch;
 }
 
-.translucent-box {
-    background-color: rgb(0, 0, 0, 50%);
-    border-radius: 10px;
-    padding-bottom: 4rem;
-}
-
-
 .secondary-button {
     width: fit-content;
     height: fit-content;
