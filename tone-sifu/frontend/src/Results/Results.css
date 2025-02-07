@@ -7,15 +7,13 @@
     
     font-style: normal;
     
-    }
+}
 
 .results-container {
-    display: flex;
-    flex-direction: column;
-    align-self: flex-start;
+    display: grid;
     padding-top: 5rem;
     min-width: 50%;
-    max-height: 1rem;
+    padding-bottom: 2rem;
 }
 
 .result-card {

@@ -16,7 +16,7 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
     buttonRef.current = tones.map((element, i) => buttonRef.current[i] ?? createRef());
 
     useEffect(() => {
-      setCurrentWord(words[index]); // Remove word if already used, repeating words causes audio not to play
+      setCurrentWord(words[index]);
       if (index >= 10) {
         testStateSetter(2)
       }

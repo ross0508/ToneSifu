@@ -4,7 +4,7 @@ import Checkbox from './Checkbox/Checkbox'
 import SelectLanguage from './SelectLanguage/SelectLanguage'
 import axios from 'axios'
 
-export default function TestSettings({ testStateSetter, wordListSetter, filterList, setFilterList, setLanguage, language }) {
+export default function TestSettings({ setQuestionLog, testStateSetter, wordListSetter, filterList, setFilterList, setLanguage, language }) {
 
   const [settingsPage, setSettingsPage] = useState(0)
 
@@ -81,8 +81,9 @@ export default function TestSettings({ testStateSetter, wordListSetter, filterLi
       alert("Please select at least 2 tones.");
     } else {
       const wordsFromBackend = await getBackend()
-      wordListSetter(wordsFromBackend);
-      testStateSetter(1);
+      wordListSetter(wordsFromBackend) // Gets list of words for test
+      setQuestionLog([]) // Resets list of answered questions
+      testStateSetter(1) // Moves to test screen
     } 
   }
 

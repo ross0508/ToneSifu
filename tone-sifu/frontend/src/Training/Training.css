@@ -4,7 +4,8 @@
     align-items: center;
     background-image: url('../assets/darkbg.png');
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;

@@ -18,7 +18,7 @@ export default function Training() {
     <>
       <FullNavbar />
       <div className="training-page">
-        {testState==0 && <TestSettings testStateSetter={setTestState} wordListSetter={setWordList} filterList={filterList} setFilterList={setFilterList} setLanguage={setLanguage} language={language}></TestSettings>}
+        {testState==0 && <TestSettings setQuestionLog={setQuestionLog} testStateSetter={setTestState} wordListSetter={setWordList} filterList={filterList} setFilterList={setFilterList} setLanguage={setLanguage} language={language}></TestSettings>}
         {testState==1 && <TestScreen testStateSetter={setTestState} words={wordList} tones={filterList} language={language} questionLog={questionLog} setQuestionLog={setQuestionLog}></TestScreen>}
         {testState==2 && <Results questionLog={questionLog} testStateSetter={setTestState}></Results>}
       </div>
