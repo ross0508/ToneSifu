@@ -83,23 +83,24 @@ app.post('/users/:user_id', async (req, res) => {
 });
 
 
-// Add performance log
+// Add performance log MANDARIN
 
-app.post('/log/:user_id', async (req, res) => {
+app.post('/log/cmn/:user_id', async (req, res) => {
     const { user_id } = req.params
     const score = req.query.score.map(Number) // Convert scores sent in params to array of numbers
     const total = req.query.total.map(Number) // Same for total answered
     const date = new Date().toISOString().split('T')[0];
-    
+    // const date = '2025-02-09'
+
     try {
         const userResult = await pool.query(
-            `INSERT INTO user_performance (total_correct, total_answered, date, user_id) VALUES ($1, $2, $3, $4) ON CONFLICT (user_id, date) 
+            `INSERT INTO user_performance_cmn (total_correct, total_answered, date, user_id) VALUES ($1, $2, $3, $4) ON CONFLICT (user_id, date) 
     DO UPDATE SET 
     total_correct = array(
-        SELECT unnest(user_performance.total_correct) + unnest(EXCLUDED.total_correct)
+        SELECT unnest(user_performance_cmn.total_correct) + unnest(EXCLUDED.total_correct)
     ),
     total_answered = array(
-        SELECT unnest(user_performance.total_answered) + unnest(EXCLUDED.total_answered)
+        SELECT unnest(user_performance_cmn.total_answered) + unnest(EXCLUDED.total_answered)
     )`,
             [score, total, date, user_id]
         );
@@ -109,3 +110,33 @@ app.post('/log/:user_id', async (req, res) => {
         res.status(500).json({ error: 'Database error' })
     }
 })
+
+
+// Add performance log CANTONESE
+
+app.post('/log/yue/:user_id', async (req, res) => {
+    const { user_id } = req.params;
+    const score = req.query.score.map(Number); // Convert scores sent in params to array of numbers
+    const total = req.query.total.map(Number); // Same for total answered
+    const date = new Date().toISOString().split('T')[0];
+
+    try {
+        const userResult = await pool.query(
+            `INSERT INTO user_performance_yue (total_correct, total_answered, date, user_id) 
+            VALUES ($1, $2, $3, $4) 
+            ON CONFLICT (user_id, date) 
+            DO UPDATE SET 
+                total_correct = array(
+                    SELECT unnest(user_performance_yue.total_correct) + unnest(EXCLUDED.total_correct)
+                ),
+                total_answered = array(
+                    SELECT unnest(user_performance_yue.total_answered) + unnest(EXCLUDED.total_answered)
+                )`,
+            [score, total, date, user_id]
+        );
+        res.status(201).send('User performance logged');
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Database error' });
+    }
+});
