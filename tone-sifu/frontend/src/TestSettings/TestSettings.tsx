@@ -41,9 +41,8 @@ export default function TestSettings({ length, setLength, setScore, setTotal, se
       const wordsFromBackend = await getBackend()
       wordListSetter(wordsFromBackend) // Gets list of words for test
       setQuestionLog([]) // Resets list of answered questions
-      setScore(0) // Resets score
-      setScore([0, 0, 0, 0, 0, 0, 0])
-      setTotal([0, 0, 0, 0, 0, 0, 0])
+      setScore([0, 0, 0, 0, 0, 0, 0]) // Resets score
+      setTotal([0, 0, 0, 0, 0, 0, 0]) // Resets question counter
       testStateSetter(1) // Moves to test screen
     } 
   }
@@ -79,7 +78,7 @@ export default function TestSettings({ length, setLength, setScore, setTotal, se
         </div>
         }
         <h1>Test Length</h1>
-        <input className='length-slider' type='range' min='5' max='50' defaultValue='10' onChange={handleSlider}></input>
+        <input className='length-slider' type='range' min='5' max='50' defaultValue='10' onChange={handleSlider} value={length}></input>
         <h1>{length} words</h1>
       </div>}
     </>

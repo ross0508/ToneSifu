@@ -86,7 +86,7 @@ export default function TestScreen({ length, score, setScore, total, setTotal, t
     const sortedTones = tones.sort(); // Maybe move this so it doesnt run every refresh
 
     const handleAnswer = (i, tone) => {
-      if (!answered) {
+      if (!answered && tones.includes(tone)) { // Ensure user hasn't answered yet and isn't hitting key for invalid tone
         setSelection(i)
 
         const newTotal= total.map((s, i) => { // Increment total questions answered for both total score and current tone
