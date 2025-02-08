@@ -25,7 +25,7 @@ export default function Profile() {
       <div className="profile-container">
         <div className="profile-information-container">
           <h1>Name</h1>
-          <p>{user?.name}</p>
+          <p>{user.name}</p>
         </div>
         <div className="graph-container">
           <LineGraph></LineGraph>

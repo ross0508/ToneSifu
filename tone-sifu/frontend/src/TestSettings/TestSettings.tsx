@@ -23,9 +23,9 @@ export default function TestSettings({ length, setLength, setScore, setTotal, se
     try {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:8080/words/${language}/random/${length}`,  // Change so test length can be customised
+        url: `http://localhost:8080/words/${language}/random/${length}`,
         params: { 
-          tones: filterList  // Send as query parameters
+          tones: filterList  // Send tone list for filtering as query params
         }
       });
       return response.data;
@@ -78,7 +78,7 @@ export default function TestSettings({ length, setLength, setScore, setTotal, se
         </div>
         }
         <h1>Test Length</h1>
-        <input className='length-slider' type='range' min='5' max='50' defaultValue='10' onChange={handleSlider} value={length}></input>
+        <input className='length-slider' type='range' min='5' max='50' onChange={handleSlider} value={length}></input>
         <h1>{length} words</h1>
       </div>}
     </>

@@ -52,3 +52,25 @@ app.get('/words/yue/random/:n', async (req, res) => {
     const words = await pool.query('SELECT * FROM cantoneseword WHERE tone = ANY($1::int[]) ORDER BY RANDOM() LIMIT $2', [toneArray, n]);
     res.json(words.rows)
 })
+
+// USERS
+
+// Create user
+
+app.post('/users/:user_id', async (req, res) => {
+    const { user_id } = req.params;
+    
+    try {
+        const userResult = await pool.query(
+            'INSERT INTO users (user_id, exp) VALUES ($1, $2) RETURNING user_id, exp',
+            [user_id, 0]
+        );
+
+        const { user_id: userId, exp } = userResult.rows[0];
+
+        res.status(201).json({ user_id: userId, exp });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Database error' });
+    }
+});
