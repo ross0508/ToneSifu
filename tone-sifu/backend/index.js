@@ -90,6 +90,7 @@ app.post('/log/cmn/:user_id', async (req, res) => {
     const score = req.query.score.map(Number) // Convert scores sent in params to array of numbers
     const total = req.query.total.map(Number) // Same for total answered
     const date = new Date().toISOString().split('T')[0];
+
     // const date = '2025-02-09'
 
     try {
@@ -118,7 +119,9 @@ app.post('/log/yue/:user_id', async (req, res) => {
     const { user_id } = req.params;
     const score = req.query.score.map(Number); // Convert scores sent in params to array of numbers
     const total = req.query.total.map(Number); // Same for total answered
-    const date = new Date().toISOString().split('T')[0];
+    // const date = new Date().toISOString().split('T')[0];
+    
+    const date = '2025-02-09'
 
     try {
         const userResult = await pool.query(
@@ -135,6 +138,51 @@ app.post('/log/yue/:user_id', async (req, res) => {
             [score, total, date, user_id]
         );
         res.status(201).send('User performance logged');
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Database error' });
+    }
+});
+
+
+// Get last 30 days CANTONESE
+
+app.get('/log/yue/:user_id', async (req, res) => {
+    const { user_id } = req.params;
+    try {
+        const result = await pool.query(
+            `SELECT * 
+             FROM user_performance_yue 
+             WHERE user_id = $1 
+             AND TO_DATE(date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '30 days' 
+             ORDER BY date DESC`,
+            [user_id]
+        );
+        
+        res.json(result.rows); // Send the result back as JSON
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Database error' });
+    }
+});
+
+
+// Get last 30 days MANDARIN
+
+app.get('/logs/yue/:user_id', async (req, res) => {
+    const { user_id } = req.params;
+
+    try {
+        const result = await pool.query(
+            `SELECT * 
+             FROM user_performance_yue 
+             WHERE user_id = $1 
+             AND TO_DATE(date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '30 days' 
+             ORDER BY date DESC`,
+            [user_id]
+        );
+        
+        res.json(result.rows); // Send the result back as JSON
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Database error' });

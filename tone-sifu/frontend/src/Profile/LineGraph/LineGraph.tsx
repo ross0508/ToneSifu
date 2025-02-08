@@ -6,7 +6,8 @@ import { Chart as ChartJS,
          LineElement,
          Title,
          Tooltip,
-         Legend
+         Legend,
+         TimeScale
         } from 'chart.js';
 
 ChartJS.register(
@@ -16,25 +17,30 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  TimeScale
 );
 
-export default function LineGraph() {
-
+export default function LineGraph({ logData }) {
+  console.log("logData")
+  console.log(logData)
   const language = "Cantonese"
 
   const tones = [1,2,3,4,5,6]
 
   const colorMap = ["", "rgb(0, 153, 255)", "rgb(170, 0, 0)", "rgb(150, 0, 170)", "rgb(170, 153, 0)", "rgb(0, 170, 77)", "rgb(3, 0, 170)"] // Maps each tone to a different line colour
 
-  const datasets = []
+  const datasets = [] // Initialise datatsets array
 
-  tones.forEach((tone) => datasets.push({
-    label: tone,
-    data: [tone*1000, 2000, tone*780, 4000, 2500],
-    borderColor: colorMap[tone]
-  },))
-
+  tones.forEach((tone) => { // Loop through each tone
+    const toneData = []
+    logData.forEach((log) => toneData.push(log.total_correct[tone]/log.total_answered[tone]*100)) // For each tone, go through every log entry and calculate the percentage accuracy for that tone
+    datasets.push({
+      label: tone,
+      data: toneData,
+      borderColor: colorMap[tone]
+    },)
+  })
   const options = {
     responsive: true,
     plugins: {
@@ -46,14 +52,16 @@ export default function LineGraph() {
     }
   };
 
+  const labels = []
+
+  logData.forEach((log) => {
+    labels.push(log.date)
+  })
+
+  labels.reverse(); // Put date labels in correct order
+
   const data = {
-    labels: [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday'
-    ],
+    labels: labels,
     datasets: datasets
   };
 
