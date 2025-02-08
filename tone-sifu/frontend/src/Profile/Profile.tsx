@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 export default function Profile() {
 
   const { user, isAuthenticated } = useAuth0();
-  const [language, setLanguage] = useState('yue')
+  const [language, setLanguage] = useState('cmn')
   const [logData, setLogData] = useState([])
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export default function Profile() {
           <p>{user.name}</p>
         </div>
         <div className="graph-container">
-          <LineGraph logData={logData}></LineGraph>
+          <LineGraph language={language} logData={logData}></LineGraph>
         </div>
       </div>
     </>

@@ -89,9 +89,9 @@ app.post('/log/cmn/:user_id', async (req, res) => {
     const { user_id } = req.params
     const score = req.query.score.map(Number) // Convert scores sent in params to array of numbers
     const total = req.query.total.map(Number) // Same for total answered
-    const date = new Date().toISOString().split('T')[0];
+    // const date = new Date().toISOString().split('T')[0];
 
-    // const date = '2025-02-09'
+    const date = '2025-01-13'
 
     try {
         const userResult = await pool.query(
@@ -119,9 +119,7 @@ app.post('/log/yue/:user_id', async (req, res) => {
     const { user_id } = req.params;
     const score = req.query.score.map(Number); // Convert scores sent in params to array of numbers
     const total = req.query.total.map(Number); // Same for total answered
-    // const date = new Date().toISOString().split('T')[0];
-    
-    const date = '2025-02-09'
+    const date = new Date().toISOString().split('T')[0];
 
     try {
         const userResult = await pool.query(
@@ -145,14 +143,14 @@ app.post('/log/yue/:user_id', async (req, res) => {
 });
 
 
-// Get last 30 days CANTONESE
+// Get last 30 days MANDARIN
 
-app.get('/log/yue/:user_id', async (req, res) => {
+app.get('/log/cmn/:user_id', async (req, res) => {
     const { user_id } = req.params;
     try {
         const result = await pool.query(
             `SELECT * 
-             FROM user_performance_yue 
+             FROM user_performance_cmn 
              WHERE user_id = $1 
              AND TO_DATE(date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '30 days' 
              ORDER BY date DESC`,
@@ -167,11 +165,10 @@ app.get('/log/yue/:user_id', async (req, res) => {
 });
 
 
-// Get last 30 days MANDARIN
+// Get last 30 days CANTONESE
 
-app.get('/logs/yue/:user_id', async (req, res) => {
+app.get('/log/yue/:user_id', async (req, res) => {
     const { user_id } = req.params;
-
     try {
         const result = await pool.query(
             `SELECT * 

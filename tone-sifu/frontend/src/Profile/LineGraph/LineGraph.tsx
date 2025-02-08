@@ -10,6 +10,8 @@ import { Chart as ChartJS,
          TimeScale
         } from 'chart.js';
 
+import 'chartjs-adapter-date-fns';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -21,10 +23,9 @@ ChartJS.register(
   TimeScale
 );
 
-export default function LineGraph({ logData }) {
+export default function LineGraph({ language, logData }) {
   console.log("logData")
   console.log(logData)
-  const language = "Cantonese"
 
   const tones = [1,2,3,4,5,6]
 
@@ -49,7 +50,20 @@ export default function LineGraph({ logData }) {
     },
     layout: {
       padding: {right: 20}
-    }
+    },
+    scales: {
+      x: {
+          type: 'time', // Set the x-axis to time scale
+          time: {
+              unit: 'day', // Specify the unit (e.g., day, month, etc.)
+              tooltipFormat: 'll', // Optional: Format for the tooltip
+          },
+          title: {
+              display: true,
+              text: 'Date'
+          }
+      }
+  }
   };
 
   const labels = []
