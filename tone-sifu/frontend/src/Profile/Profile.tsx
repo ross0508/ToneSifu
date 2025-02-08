@@ -28,7 +28,7 @@ export default function Profile() {
     if (isAuthenticated) {
       getLogs()
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated, language]) // Get logs from database again when language settings is changed
 
   if (!isAuthenticated) {
     return (
@@ -42,10 +42,6 @@ export default function Profile() {
     )
   }
 
-  const dates = logData.map(item => item.date); // Get all the dates
-  const totalAnswered = logData.map(item => item.total_answered.slice(1)); // Skip index 0, take values from 1 to 5
-  const totalCorrect = logData.map(item => item.total_correct.slice(1));
-
   return (
     <>
       <FullNavbar />
@@ -56,6 +52,8 @@ export default function Profile() {
         </div>
         <div className="graph-container">
           <LineGraph language={language} logData={logData}></LineGraph>
+          {language == 'yue' && <button className='graph-language-button' onClick={() => setLanguage('cmn')}>Mandarin</button>}
+          {language == 'cmn' && <button className='graph-language-button' onClick={() => setLanguage('yue')}>Cantonese</button>}
         </div>
       </div>
     </>

@@ -27,7 +27,12 @@ export default function LineGraph({ language, logData }) {
   console.log("logData")
   console.log(logData)
 
-  const tones = [1,2,3,4,5,6]
+  const toneMap = {
+    'cmn': [1,2,3,4],
+    'yue': [1,2,3,4,5,6]
+  }
+
+  const tones = toneMap[language] // Map the language to its corresponding list of tones
 
   const colorMap = ["", "rgb(0, 153, 255)", "rgb(170, 0, 0)", "rgb(150, 0, 170)", "rgb(170, 153, 0)", "rgb(0, 170, 77)", "rgb(3, 0, 170)"] // Maps each tone to a different line colour
 
