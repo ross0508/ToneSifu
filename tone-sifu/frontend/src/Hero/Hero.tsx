@@ -66,11 +66,7 @@ export default function Hero() {
           <div className="hero-left">
             <h1 className="hero-title">Info</h1>
             <h2 className="hero-subtitle">How it works</h2>
-            <p className="hero-text">ToneSifu is a platform for practicing your tone recognition. You listen to a word, select the corresponding tone, and then select the correct option. You can also see your progress over time and the areas you struggle with.</p>
-            <div className='info-box'>
-              <h1>Mandarin</h1>
-              <h1>Cantonese</h1>
-            </div>
+            <p className="hero-text">Learn to tell apart tones in either <span className='bold'>Mandarin</span> or <span className='bold'>Cantonese</span>. ToneSifu uses audio-based training to help you practice your tone recognition and master a new language!</p>
           </div>
           </div>
         </section>
