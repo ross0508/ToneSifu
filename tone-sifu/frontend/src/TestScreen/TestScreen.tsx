@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, createRef } from 'react'
 import './TestScreen.css'
 
-export default function TestScreen({ setScore, testStateSetter, words, tones, language, questionLog, setQuestionLog }) {
+export default function TestScreen({ score, setScore, total, setTotal, testStateSetter, words, tones, language, questionLog, setQuestionLog }) {
 
     const [index, setIndex] = useState(0)
     const [currentWord, setCurrentWord] = useState({})
@@ -89,9 +89,28 @@ export default function TestScreen({ setScore, testStateSetter, words, tones, la
     const handleAnswer = (i, tone) => {
       if (!answered) {
         setSelection(i)
+
+        const newTotal= total.map((s, i) => { // Increment total questions answered for both total score and current tone
+          if (i == 0 || i == currentWord.tone) {
+            return s + 1;
+          } else {
+            return s;
+          }
+        });
+        setTotal(newTotal);
+
         if (tone == currentWord.tone) {
           setCorrect(true);
-          setScore((s) => s+1)
+
+          const newScore= score.map((s, i) => { // Increment correct answers for both total score and current tone
+            if (i == 0 || i == currentWord.tone) {
+              return s + 1;
+            } else {
+              return s;
+            }
+          });
+          setScore(newScore);
+
           buttonRef.current[i].current.classList.add("answer-button-correct")
         } else {
           setCorrect(false)

@@ -4,7 +4,7 @@ import Checkbox from './Checkbox/Checkbox'
 import SelectLanguage from './SelectLanguage/SelectLanguage'
 import axios from 'axios'
 
-export default function TestSettings({ setScore, setQuestionLog, testStateSetter, wordListSetter, filterList, setFilterList, setLanguage, language }) {
+export default function TestSettings({ setScore, setTotal, setQuestionLog, testStateSetter, wordListSetter, filterList, setFilterList, setLanguage, language }) {
 
   const [settingsPage, setSettingsPage] = useState(0)
 
@@ -84,6 +84,8 @@ export default function TestSettings({ setScore, setQuestionLog, testStateSetter
       wordListSetter(wordsFromBackend) // Gets list of words for test
       setQuestionLog([]) // Resets list of answered questions
       setScore(0) // Resets score
+      setScore([0, 0, 0, 0, 0, 0, 0])
+      setTotal([0, 0, 0, 0, 0, 0, 0])
       testStateSetter(1) // Moves to test screen
     } 
   }
