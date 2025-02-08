@@ -77,8 +77,7 @@ export default function TestScreen({ score, setScore, total, setTotal, testState
           }
           break;
         case "KeyR":
-          const audio = new Audio(currentWord.romanization + '.mp3');
-          audio.play()
+          handleAudio() // Plays audio for current word
           break;
       }
     }
@@ -141,9 +140,14 @@ export default function TestScreen({ score, setScore, total, setTotal, testState
       
     }
 
+  const handleAudio = () => {
+    const audio = new Audio(currentWord.romanization + '.mp3')
+    audio.play()
+  }
+
   return ( // Show arrows for mandarin
     <div className='test-screen-container'> 
-      <button className='play-next-button play-button' onClick={() => audio.play()}>PLAY</button>
+      <button className='play-next-button play-button' onClick={handleAudio}>PLAY</button>
       {answered  && <button className='play-next-button next-button' onClick={handleNext}>Next</button>}
       <div className='answer-button-container'>
         {language == 'cmn' && sortedTones.map((tone, i) => <button ref={buttonRef.current[i]} className='answer-button' key={i} onClick={() => handleAnswer(i, tone)}>{cmnToneArrows[tone]}</button>)}

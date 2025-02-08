@@ -21,6 +21,7 @@
 }
 
 .answer-button {
+    background-color:rgb(255, 255, 255);
     width: 15rem;
     height: 6rem;
     border: none;
@@ -29,11 +30,11 @@
     border-radius: 10px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
     text-size-adjust: 100%;
-    background-color: var(--text-colour);
     color: var(--text-colour-secondary);
     font-size: 2rem;
     padding: 1rem 2rem;
     font-weight: bold;
+    transform: 0.1s;
 }
 
 .answer-button:hover {
@@ -59,10 +60,11 @@
     padding: 1rem;
     margin: 1rem;
     border-radius: 10px;
+    background-color: var(--highlight-colour)
 }
 
 .play-next-button:hover {
-    background-color: rgb(126, 126, 126);
+    background-color: rgb(189, 31, 31);
     scale: 1.03;
 }
 
