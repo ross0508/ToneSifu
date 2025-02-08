@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef, createRef } from 'react'
 import './TestScreen.css'
+import { useAuth0 } from "@auth0/auth0-react"
+import axios from 'axios'
 
 export default function TestScreen({ length, score, setScore, total, setTotal, testStateSetter, words, tones, language, questionLog, setQuestionLog }) {
 
@@ -13,14 +15,19 @@ export default function TestScreen({ length, score, setScore, total, setTotal, t
 
     const buttonRef = useRef([])
 
+    const { user, isAuthenticated } = useAuth0();
+
     buttonRef.current = tones.map((element, i) => buttonRef.current[i] ?? createRef());
 
     useEffect(() => {
       setCurrentWord(words[index]);
-      if (index >= length) {
-        testStateSetter(2)
-      }
-    },
+        if (index >= length) {
+          if (isAuthenticated) {
+            handleSaveLog()
+          }
+          testStateSetter(2)
+        }
+      },
       [index])
 
 
@@ -137,12 +144,27 @@ export default function TestScreen({ length, score, setScore, total, setTotal, t
           buttonRef.current[sortedTones.findIndex((n) => n == currentWord.tone)].current.classList.remove("answer-button-correct")
         }
       }
-      
     }
 
   const handleAudio = () => {
     const audio = new Audio(currentWord.romanization + '.mp3')
     audio.play()
+  }
+
+  const handleSaveLog = async () => {
+    try {
+      const response = await axios({
+        method: "POST",
+        url: `http://localhost:8080/log/${user.sub}`,
+        params: { 
+          score: score,
+          total: total
+        }
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error saving log data", error)
+    }
   }
 
   return ( // Show arrows for mandarin
