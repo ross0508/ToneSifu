@@ -4,7 +4,7 @@ import Checkbox from './Checkbox/Checkbox'
 import SelectLanguage from './SelectLanguage/SelectLanguage'
 import axios from 'axios'
 
-export default function TestSettings({ setQuestionLog, testStateSetter, wordListSetter, filterList, setFilterList, setLanguage, language }) {
+export default function TestSettings({ setScore, setQuestionLog, testStateSetter, wordListSetter, filterList, setFilterList, setLanguage, language }) {
 
   const [settingsPage, setSettingsPage] = useState(0)
 
@@ -12,7 +12,7 @@ export default function TestSettings({ setQuestionLog, testStateSetter, wordList
   //possibly filter on backend instead of frontend
 
   const yueWords = [
-    {'jyutping' : 'zyu1', 'tone' : 1},
+    {'jyutping' : 'zyu1', 'tone' : 1}, // Delete after adding all to PostgreSQL
     {'jyutping' : 'ceoi1', 'tone' : 1},
     {'jyutping' : 'cin4', 'tone' : 4},
     {'jyutping' : 'soeng2', 'tone' : 2},
@@ -83,6 +83,7 @@ export default function TestSettings({ setQuestionLog, testStateSetter, wordList
       const wordsFromBackend = await getBackend()
       wordListSetter(wordsFromBackend) // Gets list of words for test
       setQuestionLog([]) // Resets list of answered questions
+      setScore(0) // Resets score
       testStateSetter(1) // Moves to test screen
     } 
   }

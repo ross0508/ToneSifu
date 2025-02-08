@@ -42,17 +42,34 @@
     margin: none;
 }
 
-.retry-button {
+.score-container {
+    display: flex;
     margin-top: 7rem;
+    gap: 3rem;
+}
+
+.score-display {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-style: none;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    transition: 0.1s;
+    font-size: 2rem;
+}
+
+.retry-button {
     background-color: var(--highlight-colour);
     border-style: none;
     border-radius: 10px;
     padding: 1rem;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
     transition: 0.1s;
+    font-size: 2rem;
 }
 
 .retry-button:hover {
     background-color: rgb(182, 45, 45);
     scale: 1.1;
 }
+

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, createRef } from 'react'
 import './TestScreen.css'
 
-export default function TestScreen({ testStateSetter, words, tones, language, questionLog, setQuestionLog }) {
+export default function TestScreen({ setScore, testStateSetter, words, tones, language, questionLog, setQuestionLog }) {
 
     const [index, setIndex] = useState(0)
     const [currentWord, setCurrentWord] = useState({})
@@ -91,6 +91,7 @@ export default function TestScreen({ testStateSetter, words, tones, language, qu
         setSelection(i)
         if (tone == currentWord.tone) {
           setCorrect(true);
+          setScore((s) => s+1)
           buttonRef.current[i].current.classList.add("answer-button-correct")
         } else {
           setCorrect(false)
