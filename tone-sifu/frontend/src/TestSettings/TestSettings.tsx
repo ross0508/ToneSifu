@@ -11,43 +11,6 @@ export default function TestSettings({ length, setLength, setScore, setTotal, se
   //use variable to determine whether mandarin/cantonese database call
   //possibly filter on backend instead of frontend
 
-  const yueWords = [
-    {'jyutping' : 'zyu1', 'tone' : 1}, // Delete after adding all to PostgreSQL
-    {'jyutping' : 'ceoi1', 'tone' : 1},
-    {'jyutping' : 'cin4', 'tone' : 4},
-    {'jyutping' : 'soeng2', 'tone' : 2},
-    {'jyutping' : 'zoeng1', 'tone' : 1},
-    {'jyutping' : 'jyu4', 'tone' : 4},
-    {'jyutping' : 'zi1', 'tone' : 1},
-    {'jyutping' : 'si3', 'tone' : 3},
-    {'jyutping' : 'daa2', 'tone' : 2},
-    {'jyutping' : 'saai1', 'tone' : 1},
-    {'jyutping' : 'pin1', 'tone' : 1},
-    {'jyutping' : 'ji2', 'tone' : 2},
-    {'jyutping' : 'so1', 'tone' : 1},
-    {'jyutping' : 'fau2', 'tone' : 2},
-    {'jyutping' : 'hin2', 'tone' : 2},
-    {'jyutping' : 'leon4', 'tone' : 4},
-    {'jyutping' : 'ming4', 'tone' : 4},
-    {'jyutping' : 'duk6', 'tone' : 6},
-    {'jyutping' : 'dung6', 'tone' : 6},
-    {'jyutping' : 'man5', 'tone' : 5},
-    {'jyutping' : 'maa6', 'tone' : 6},
-    {'jyutping' : 'seoi5', 'tone' : 5},
-    {'jyutping' : 'tai4', 'tone' : 4},
-    {'jyutping' : 'ngo6', 'tone' : 6},
-    {'jyutping' : 'lek1', 'tone' : 1},
-    {'jyutping' : 'gaak3', 'tone' : 3},
-    {'jyutping' : 'cyun2', 'tone' : 2},
-    {'jyutping' : 'ci3', 'tone' : 3},
-    {'jyutping' : 'leoi6', 'tone' : 6},
-    {'jyutping' : 'mong5', 'tone' : 5},
-    {'jyutping' : 'mou5', 'tone' : 5},
-    {'jyutping' : 'san4', 'tone' : 4},
-    {'jyutping' : 'soek3', 'tone' : 3},
-    {'jyutping' : 'caan4', 'tone' : 4}
-  ]
-
   const handleChange = (e, tone) => {
     if (e.target.checked) {
       setFilterList([...filterList, tone]);
@@ -60,7 +23,7 @@ export default function TestSettings({ length, setLength, setScore, setTotal, se
     try {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:8080/words/${language}/random/10`,  // Change so test length can be customised
+        url: `http://localhost:8080/words/${language}/random/${length}`,  // Change so test length can be customised
         params: { 
           tones: filterList  // Send as query parameters
         }

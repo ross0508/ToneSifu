@@ -30,7 +30,6 @@ app.get('/words/cmn/random/:n', async (req, res) => {
     const toneArray = req.query.tones.map(Number); // Convert tones sent in params to array of numbers
     const words = await pool.query('SELECT * FROM mandarinword WHERE tone = ANY($1::int[]) ORDER BY RANDOM() LIMIT $2', [toneArray, n]);
     res.json(words.rows)
-    console.log(words.rows)
 })
 
 
