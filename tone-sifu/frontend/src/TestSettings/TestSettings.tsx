@@ -48,11 +48,6 @@ export default function TestSettings({ setScore, setTotal, setQuestionLog, testS
     {'jyutping' : 'caan4', 'tone' : 4}
   ]
 
-  const cmnWords = [
-    {'jyutping' : 'shuǐ', 'tone' : 3},
-    {'jyutping' : 'rén', 'tone' : 2},
-  ]
-
   const handleChange = (e, tone) => {
     if (e.target.checked) {
       setFilterList([...filterList, tone]);

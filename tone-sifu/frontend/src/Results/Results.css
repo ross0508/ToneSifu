@@ -44,8 +44,9 @@
 
 .score-container {
     display: flex;
+    align-items: center;
     margin-top: 7rem;
-    gap: 3rem;
+    gap: 5rem;
 }
 
 .score-display {
@@ -66,6 +67,7 @@
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
     transition: 0.1s;
     font-size: 2rem;
+    max-height: fit-content;
 }
 
 .retry-button:hover {
@@ -73,3 +75,6 @@
     scale: 1.1;
 }
 
+.tone-score {
+    color: rgb(189, 189, 189);
+}
