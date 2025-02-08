@@ -4,7 +4,7 @@ import Checkbox from './Checkbox/Checkbox'
 import SelectLanguage from './SelectLanguage/SelectLanguage'
 import axios from 'axios'
 
-export default function TestSettings({ setScore, setTotal, setQuestionLog, testStateSetter, wordListSetter, filterList, setFilterList, setLanguage, language }) {
+export default function TestSettings({ length, setLength, setScore, setTotal, setQuestionLog, testStateSetter, wordListSetter, filterList, setFilterList, setLanguage, language }) {
 
   const [settingsPage, setSettingsPage] = useState(0)
 
@@ -85,6 +85,10 @@ export default function TestSettings({ setScore, setTotal, setQuestionLog, testS
     } 
   }
 
+  const handleSlider = (e) => {
+    setLength(e.target.value)
+  }
+
   return (
     <>
       {settingsPage == 0 && <SelectLanguage setLanguage={setLanguage} setSettingsPage={setSettingsPage} setFilterList={setFilterList}></SelectLanguage>}
@@ -111,6 +115,9 @@ export default function TestSettings({ setScore, setTotal, setQuestionLog, testS
           <Checkbox setter={handleChange} tone={4} />
         </div>
         }
+        <h1>Test Length</h1>
+        <input className='length-slider' type='range' min='5' max='50' defaultValue='10' onChange={handleSlider}></input>
+        <h1>{length} words</h1>
       </div>}
     </>
   )

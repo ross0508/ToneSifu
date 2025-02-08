@@ -3,3 +3,7 @@
     margin-top: 0rem;
     accent-color: var(--highlight-colour);
 }
+
+.pointer-hover {
+    cursor: pointer;
+}

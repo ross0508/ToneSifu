@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, createRef } from 'react'
 import './TestScreen.css'
 
-export default function TestScreen({ score, setScore, total, setTotal, testStateSetter, words, tones, language, questionLog, setQuestionLog }) {
+export default function TestScreen({ length, score, setScore, total, setTotal, testStateSetter, words, tones, language, questionLog, setQuestionLog }) {
 
     const [index, setIndex] = useState(0)
     const [currentWord, setCurrentWord] = useState({})
@@ -17,7 +17,7 @@ export default function TestScreen({ score, setScore, total, setTotal, testState
 
     useEffect(() => {
       setCurrentWord(words[index]);
-      if (index >= 10) {
+      if (index >= length) {
         testStateSetter(2)
       }
     },

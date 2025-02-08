@@ -60,7 +60,8 @@
     padding: 1rem;
     margin: 1rem;
     border-radius: 10px;
-    background-color: var(--highlight-colour)
+    background-color: var(--highlight-colour);
+    cursor: pointer;
 }
 
 .play-next-button:hover {

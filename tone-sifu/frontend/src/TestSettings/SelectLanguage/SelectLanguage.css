@@ -13,6 +13,7 @@
     padding: 2rem;
     text-decoration: none;
     transition: 0.1s;
+    cursor: pointer;
 }
 
 .language-card:hover {
