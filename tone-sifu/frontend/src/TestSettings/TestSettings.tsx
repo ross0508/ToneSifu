@@ -90,7 +90,11 @@ export default function TestSettings({ setScore, setTotal, setQuestionLog, testS
       {settingsPage == 0 && <SelectLanguage setLanguage={setLanguage} setSettingsPage={setSettingsPage} setFilterList={setFilterList}></SelectLanguage>}
 
       {settingsPage == 1 && <div className='test-settings-container'>
-        <button className='return-button' onClick={() => setSettingsPage(0)}>Back</button>
+        <div className='settings-button-container'>
+          <button className='return-button' onClick={() => setSettingsPage(0)}>Back</button>
+          <button className='start-button' onClick={handleSubmit}>Start</button>
+        </div>
+        <h1 className='settings-info-text'>Select Tones</h1>
         {language == 'yue' && <div className='checkbox-container'>
           <Checkbox setter={handleChange} tone={1} />
           <Checkbox setter={handleChange} tone={2} />
@@ -107,7 +111,6 @@ export default function TestSettings({ setScore, setTotal, setQuestionLog, testS
           <Checkbox setter={handleChange} tone={4} />
         </div>
         }
-        <button className='start-button' onClick={handleSubmit}>Start</button>
       </div>}
     </>
   )
