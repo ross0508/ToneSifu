@@ -28,7 +28,7 @@ export default function Profile() {
     if (isAuthenticated) {
       getLogs()
     }
-  }, [isAuthenticated, language]) // Get logs from database again when language settings is changed
+  }, [isAuthenticated, language]) // Get logs from database again when language setting is changed
 
   if (!isAuthenticated) {
     return (

@@ -83,15 +83,40 @@ app.post('/users/:user_id', async (req, res) => {
 });
 
 
+// Add EXP
+
+app.put('/users/:user_id', async (req, res) => {
+    const { user_id } = req.params
+    const { expToAdd } =  req.body
+    console.log(expToAdd)
+    try {
+        const userResult = await pool.query(
+            'UPDATE users SET exp = exp + $1 WHERE user_id = $2 RETURNING user_id, exp',
+            [expToAdd, user_id]
+        );
+
+        const { user_id: userId, exp } = userResult.rows[0]
+
+        res.status(201).json({ user_id: userId, exp })
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ error: 'Database error' })
+    }
+})
+
+
+
+
+// PERFORMANCE LOGS
+
+
 // Add performance log MANDARIN
 
 app.post('/log/cmn/:user_id', async (req, res) => {
     const { user_id } = req.params
     const score = req.query.score.map(Number) // Convert scores sent in params to array of numbers
     const total = req.query.total.map(Number) // Same for total answered
-    // const date = new Date().toISOString().split('T')[0];
-
-    const date = '2025-01-13'
+    const date = new Date().toISOString().split('T')[0];
 
     try {
         const userResult = await pool.query(
