@@ -48,7 +48,6 @@ export default function TestScreen({ length, score, setScore, total, setTotal, t
     });
     
     useEffect(() => {
-      console.log(currentWord)
       
       const audio = new Audio(currentWord.romanization + '.mp3');
       audio.play()

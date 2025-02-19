@@ -119,6 +119,23 @@ app.put('/users/:user_id', async (req, res) => {
 })
 
 
+// Get EXP
+
+app.get('/users/:user_id', async (req, res) => {
+    const { user_id } = req.params
+
+    try {
+        const userResult = await pool.query(
+            'SELECT exp, exp_yue, exp_cmn FROM users WHERE user_id = $1', [user_id]
+        )
+        res.json(userResult.rows)
+    } catch {
+        console.error(error)
+        res.status(500).json({ error: 'Database error' })
+    }
+})
+
+
 
 
 // PERFORMANCE LOGS

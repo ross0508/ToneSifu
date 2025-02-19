@@ -24,8 +24,6 @@ ChartJS.register(
 );
 
 export default function LineGraph({ language, logData }) {
-  console.log("logData")
-  console.log(logData)
 
   const toneMap = {
     'cmn': [1,2,3,4],

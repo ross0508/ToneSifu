@@ -10,25 +10,45 @@ export default function Profile() {
   const { user, isAuthenticated } = useAuth0();
   const [language, setLanguage] = useState('cmn')
   const [logData, setLogData] = useState([])
+  const [expData, setExpData] = useState([])
 
   useEffect(() => {
-    
+    const getExp = async () => {
+      try {
+        const response = await axios({
+          method: "GET",
+          url: `http://localhost:8080/users/${user.sub}`,
+        });
+        setExpData(response.data)
+      } catch (error) {
+        console.error("Error getting exp data", error)
+      }
+    }
+
+    if (isAuthenticated) {
+      getExp()
+    }
+  }, [isAuthenticated])
+
+  useEffect(() => {
     const getLogs = async () => {
       try {
         const response = await axios({
           method: "GET",
           url: `http://localhost:8080/log/${language}/${user.sub}`,
         });
-        console.log(response.data)
         setLogData(response.data)
       } catch (error) {
         console.error("Error getting log data", error)
       }
     }
+
     if (isAuthenticated) {
       getLogs()
     }
   }, [isAuthenticated, language]) // Get logs from database again when language setting is changed
+
+  
 
   if (!isAuthenticated) {
     return (
@@ -49,9 +69,12 @@ export default function Profile() {
         <div className="profile-information-container">
           <h1>Name</h1>
           <p>{user.name}</p>
+          <p>Total: {expData[0].exp}</p>
+          <p>Mandarin: {expData[0].exp_cmn}</p>
+          <p>Cantonese: {expData[0].exp_yue}</p>
         </div>
         <div className="graph-container">
-          <LineGraph language={language} logData={logData}></LineGraph>
+          {logData && <LineGraph language={language} logData={logData}></LineGraph>}
           {language == 'yue' && <button className='graph-language-button' onClick={() => setLanguage('cmn')}>Mandarin</button>}
           {language == 'cmn' && <button className='graph-language-button' onClick={() => setLanguage('yue')}>Cantonese</button>}
         </div>

@@ -1,10 +1,6 @@
 import './Results.css'
 
 export default function Results({ score, total, questionLog, testStateSetter }) {
-  
-console.log(score)
-console.log(total)
-console.log(total[1])
 
   return (
     <>
