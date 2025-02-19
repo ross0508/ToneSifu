@@ -69,12 +69,16 @@ export default function Profile() {
         <div className="profile-information-container">
           <h1>Name</h1>
           <p>{user.name}</p>
-          <p>Total: {expData[0].exp}</p>
-          <p>Mandarin: {expData[0].exp_cmn}</p>
-          <p>Cantonese: {expData[0].exp_yue}</p>
+          {expData.length > 0 && 
+          <>
+            <p>Total: {expData[0].exp}</p>
+            <p>Mandarin: {expData[0].exp_cmn}</p>
+            <p>Cantonese: {expData[0].exp_yue}</p>
+          </>
+          }
         </div>
         <div className="graph-container">
-          {logData && <LineGraph language={language} logData={logData}></LineGraph>}
+          {logData.length > 0 && <LineGraph language={language} logData={logData}></LineGraph>}
           {language == 'yue' && <button className='graph-language-button' onClick={() => setLanguage('cmn')}>Mandarin</button>}
           {language == 'cmn' && <button className='graph-language-button' onClick={() => setLanguage('yue')}>Cantonese</button>}
         </div>
