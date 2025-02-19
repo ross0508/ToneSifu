@@ -24,7 +24,7 @@ export default function TestScreen({ length, score, setScore, total, setTotal, t
         if (index >= length) {
           if (isAuthenticated) {
             handleSaveLog()
-            handleSaveExp()
+            handleAddExp()
           }
           testStateSetter(2)
         }
@@ -168,18 +168,19 @@ export default function TestScreen({ length, score, setScore, total, setTotal, t
     }
   }
 
-  const handleSaveExp = async () => {
+  const handleAddExp = async () => {
     try {
       const response = await axios({
         method: "PUT",
         url: `http://localhost:8080/users/${user.sub}`,
         data: { 
-          exp: 10
+          expAdded: score[0],
+          language: language
         }
       });
       return response.data;
     } catch (error) {
-      console.error("Error saving exp data", error)
+      console.error("Error adding exp", error)
     }
   }
 

@@ -87,21 +87,35 @@ app.post('/users/:user_id', async (req, res) => {
 
 app.put('/users/:user_id', async (req, res) => {
     const { user_id } = req.params
-    const { expAdded } =  req.body
-    console.log(expAdded)
-    try {
-        const userResult = await pool.query(
-            'UPDATE users SET exp = exp + $1 WHERE user_id = $2 RETURNING user_id, exp',
-            [expAdded, user_id]
-        );
+    const { expAdded, language } =  req.body
+    if (language == 'yue')
+        try {
+            const userResult = await pool.query(
+                'UPDATE users SET exp = exp + $1, exp_yue = exp_yue + $1 WHERE user_id = $2 RETURNING user_id, exp',
+                [expAdded, user_id]
+            );
 
-        const { user_id: userId, exp } = userResult.rows[0]
+            const { user_id: userId, exp } = userResult.rows[0]
 
-        res.status(201).json({ user_id: userId, exp })
-    } catch (error) {
-        console.error(error)
-        res.status(500).json({ error: 'Database error' })
-    }
+            res.status(201).json({ user_id: userId, exp })
+        } catch (error) {
+            console.error(error)
+            res.status(500).json({ error: 'Database error' })
+        }
+    if (language == 'cmn')
+        try {
+            const userResult = await pool.query(
+                'UPDATE users SET exp = exp + $1, exp_cmn = exp_cmn + $1 WHERE user_id = $2 RETURNING user_id, exp',
+                [expAdded, user_id]
+            );
+
+            const { user_id: userId, exp } = userResult.rows[0]
+
+            res.status(201).json({ user_id: userId, exp })
+        } catch (error) {
+            console.error(error)
+            res.status(500).json({ error: 'Database error' })
+        }
 })
 
 
