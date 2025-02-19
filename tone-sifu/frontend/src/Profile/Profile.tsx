@@ -4,6 +4,7 @@ import './Profile.css'
 import LineGraph from "./LineGraph/LineGraph";
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import ExpBar from "./ExpBar/ExpBar";
 
 export default function Profile() {
 
@@ -50,7 +51,7 @@ export default function Profile() {
 
   
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated || logData.length === 0 || expData.length === 0) {
     return (
       <>
         <FullNavbar />
@@ -71,16 +72,20 @@ export default function Profile() {
           <p>{user.name}</p>
           {expData.length > 0 && 
           <>
-            <p>Total: {expData[0].exp}</p>
-            <p>Mandarin: {expData[0].exp_cmn}</p>
-            <p>Cantonese: {expData[0].exp_yue}</p>
+            <p>Total Exp: {expData[0].exp}</p>
           </>
           }
         </div>
         <div className="graph-container">
-          {logData.length > 0 && <LineGraph language={language} logData={logData}></LineGraph>}
-          {language == 'yue' && <button className='graph-language-button' onClick={() => setLanguage('cmn')}>Mandarin</button>}
-          {language == 'cmn' && <button className='graph-language-button' onClick={() => setLanguage('yue')}>Cantonese</button>}
+          <div className="graph-button-container">
+            <LineGraph language={language} logData={logData}></LineGraph>
+            {language == 'yue' && <button className='graph-language-button' onClick={() => setLanguage('cmn')}>Mandarin</button>}
+            {language == 'cmn' && <button className='graph-language-button' onClick={() => setLanguage('yue')}>Cantonese</button>}
+          </div>
+          {language == 'cmn' && <h1>Exp: {expData[0].exp_cmn}</h1>}
+          {language == 'cmn' && <ExpBar exp={expData[0].exp_cmn}/>}
+          {language == 'yue' && <h1>Exp: {expData[0].exp_yue}</h1>}
+          {language == 'yue' && <ExpBar exp={expData[0].exp_yue}/>}
         </div>
       </div>
     </>
