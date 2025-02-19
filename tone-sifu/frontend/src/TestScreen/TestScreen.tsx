@@ -6,6 +6,7 @@ import axios from 'axios'
 export default function TestScreen({ length, score, setScore, total, setTotal, testStateSetter, words, tones, language, questionLog, setQuestionLog }) {
 
     const [index, setIndex] = useState(0)
+    const [wordIndex, setWordIndex] = useState(0)
     const [currentWord, setCurrentWord] = useState({})
     const [answered, setAnswered] = useState(false)
     const [correct, setCorrect] = useState(false)
@@ -20,7 +21,7 @@ export default function TestScreen({ length, score, setScore, total, setTotal, t
     buttonRef.current = tones.map((element, i) => buttonRef.current[i] ?? createRef());
 
     useEffect(() => {
-      setCurrentWord(words[index]);
+      setCurrentWord(words[wordIndex]);
         if (index >= length) {
           if (isAuthenticated) {
             handleSaveLog()
@@ -28,8 +29,7 @@ export default function TestScreen({ length, score, setScore, total, setTotal, t
           }
           testStateSetter(2)
         }
-      },
-      [index])
+    }, [index])
 
 
 
@@ -48,7 +48,6 @@ export default function TestScreen({ length, score, setScore, total, setTotal, t
     });
     
     useEffect(() => {
-      
       const audio = new Audio(currentWord.romanization + '.mp3');
       audio.play()
     }, [currentWord]);
@@ -136,6 +135,12 @@ export default function TestScreen({ length, score, setScore, total, setTotal, t
         }
         ]);
         setIndex((i) => i+1);
+        if (wordIndex < words.length - 1) {
+          setWordIndex((i) => i+1);
+        } else {
+          setWordIndex(0) // Reset to the first word if there are no more words left
+        }
+
         setAnswered(false);
         if (correct) {
           buttonRef.current[selection].current.classList.remove("answer-button-correct")
