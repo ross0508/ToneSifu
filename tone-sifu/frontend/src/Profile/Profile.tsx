@@ -37,6 +37,9 @@ export default function Profile() {
         const response = await axios({
           method: "GET",
           url: `http://localhost:8080/log/${language}/${user.sub}`,
+          params: {
+            timePeriod: 60
+          }
         });
         setLogData(response.data)
       } catch (error) {

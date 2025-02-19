@@ -161,7 +161,7 @@ export default function TestScreen({ length, score, setScore, total, setTotal, t
       const response = await axios({
         method: "POST",
         url: `http://localhost:8080/log/${language}/${user.sub}`,
-        params: { 
+        params: { // CHANGE THIS TO BODY
           score: score,
           total: total
         }

@@ -225,14 +225,16 @@ app.get('/log/cmn/:user_id', async (req, res) => {
 
 app.get('/log/yue/:user_id', async (req, res) => {
     const { user_id } = req.params;
+    const timePeriod = req.query.timePeriod
+    console.log(timePeriod)
     try {
         const result = await pool.query(
             `SELECT * 
              FROM user_performance_yue 
              WHERE user_id = $1 
-             AND TO_DATE(date, 'YYYY-MM-DD') >= CURRENT_DATE - INTERVAL '30 days' 
+             AND TO_DATE(date, 'YYYY-MM-DD') >= CURRENT_DATE - make_interval(days => $2) 
              ORDER BY date DESC`,
-            [user_id]
+            [user_id, timePeriod]
         );
         
         res.json(result.rows); // Send the result back as JSON
