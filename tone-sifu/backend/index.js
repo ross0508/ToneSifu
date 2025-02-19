@@ -87,12 +87,12 @@ app.post('/users/:user_id', async (req, res) => {
 
 app.put('/users/:user_id', async (req, res) => {
     const { user_id } = req.params
-    const { expToAdd } =  req.body
-    console.log(expToAdd)
+    const { expAdded } =  req.body
+    console.log(expAdded)
     try {
         const userResult = await pool.query(
             'UPDATE users SET exp = exp + $1 WHERE user_id = $2 RETURNING user_id, exp',
-            [expToAdd, user_id]
+            [expAdded, user_id]
         );
 
         const { user_id: userId, exp } = userResult.rows[0]
