@@ -79,8 +79,8 @@ export default function Profile() {
         <div className="graph-container">
           <div className="graph-button-container">
             <LineGraph language={language} logData={logData}></LineGraph>
-            {language == 'yue' && <button className='graph-language-button' onClick={() => setLanguage('cmn')}>Mandarin</button>}
-            {language == 'cmn' && <button className='graph-language-button' onClick={() => setLanguage('yue')}>Cantonese</button>}
+            {language == 'yue' && <button className='graph-language-button' onClick={() => setLanguage('cmn')}>Cantonese</button>}
+            {language == 'cmn' && <button className='graph-language-button' onClick={() => setLanguage('yue')}>Mandarin</button>}
           </div>
           {language == 'cmn' && <h1>Exp: {expData[0].exp_cmn}</h1>}
           {language == 'cmn' && <ExpBar exp={expData[0].exp_cmn}/>}

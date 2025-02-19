@@ -32,7 +32,7 @@ export default function LineGraph({ language, logData }) {
 
   const tones = toneMap[language] // Map the language to its corresponding list of tones
 
-  const colorMap = ["", "rgb(0, 153, 255)", "rgb(170, 0, 0)", "rgb(150, 0, 170)", "rgb(170, 153, 0)", "rgb(0, 170, 77)", "rgb(3, 0, 170)"] // Maps each tone to a different line colour
+  const colorMap = ["", "rgb(81, 185, 255)", "rgb(179, 0, 0)", "rgb(213, 123, 255)", "rgb(226, 210, 69)", "rgb(45, 204, 117)","rgb(90, 49, 236)"] // Maps each tone to a different line colour
 
   const datasets = [] // Initialise datatsets array
 
@@ -49,7 +49,7 @@ export default function LineGraph({ language, logData }) {
     responsive: true,
     plugins: {
       legend: { position: 'bottom' },
-      title: { display: true, text: language}
+      title: { display: true, text: language},
     },
     layout: {
       padding: {right: 20}
