@@ -233,11 +233,18 @@ export default function TestScreen({
   return (
     // Show arrows for mandarin
     <div className="test-screen-container">
-      <h1>
+      <h1 className="question-counter">
         {index} / {length}
       </h1>
       <button className="play-next-button play-button" onClick={handleAudio}>
-        PLAY
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 24 24"
+        >
+          <path d="M8 5v14l11-7z" />
+        </svg>
       </button>
       {answered && (
         <button className="play-next-button next-button" onClick={handleNext}>

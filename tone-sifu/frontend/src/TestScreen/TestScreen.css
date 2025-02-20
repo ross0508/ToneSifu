@@ -1,87 +1,100 @@
 .test-screen-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: fit-content;
-    height: 70%;
-    background-color: rgb(0, 0, 0, 50%);
-    border-radius: 10px;
-    margin: 5rem;
-    padding: 3rem;
-    margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: fit-content;
+  height: 70%;
+  background-color: rgb(0, 0, 0, 50%);
+  border-radius: 10px;
+  margin: 5rem;
+  padding: 3rem;
+  margin-top: 15vh;
 }
 
 .answer-button-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .answer-button {
-    background-color:rgb(255, 255, 255);
-    width: 15rem;
-    height: 6rem;
-    border: none;
-    margin: 15px;
-    cursor: pointer;
-    border-radius: 10px;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
-    text-size-adjust: 100%;
-    color: var(--text-colour-secondary);
-    font-size: 2rem;
-    padding: 1rem 2rem;
-    font-weight: bold;
-    transform: 0.1s;
+  background-color: rgb(255, 255, 255);
+  width: 20vh;
+  height: 9vh;
+  border: none;
+  margin: 1vh;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  text-size-adjust: 100%;
+  color: var(--text-colour-secondary);
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  transform: 0.1s;
 }
 
 .answer-button:hover {
-    scale: 1.03;
+  scale: 1.03;
 }
 
 .answer-button:active {
-    scale: 0.97;
+  scale: 0.97;
 }
 
 .answer-button-correct {
-    background-color: var(--correct-colour);
+  background-color: var(--correct-colour);
 }
-
 
 .answer-button-incorrect {
-    background-color: var(--highlight-colour);
+  background-color: var(--highlight-colour);
 }
 
-
 .play-next-button {
-    border: none;
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 10px;
-    background-color: var(--highlight-colour);
-    cursor: pointer;
+  border: none;
+  padding: 1vh;
+  margin: 1vh;
+  border-radius: 10px;
+  background-color: var(--highlight-colour);
+  cursor: pointer;
 }
 
 .play-next-button:hover {
-    background-color: rgb(189, 31, 31);
-    scale: 1.03;
+  background-color: rgb(189, 31, 31);
+  scale: 1.03;
 }
 
 .play-next-button:active {
-    scale: 0.97;
+  scale: 0.97;
 }
 
 .play-button {
-    height: fit-content;
-    width: fit-content;
-    margin: 5rem;
-    padding: 3rem;
-    font-size: 2rem;
+  height: fit-content;
+  width: fit-content;
+  margin: 5vh;
+  padding: 3rem;
+  font-size: 2rem;
+  color: #ffffff;
+  size: 10rem;
+}
+
+.play-button path,
+.play-button svg {
+  font-size: 10rem;
+  color: #ffffff;
 }
 
 .next-button {
-    align-self: flex-end;
-    margin: 15px;
+  align-self: flex-end;
+  margin: 1vh;
+  min-width: 10vw;
+  min-height: 5vh;
+}
+
+.question-counter {
+  margin-top: 2vh;
+  margin-bottom: 0px;
 }

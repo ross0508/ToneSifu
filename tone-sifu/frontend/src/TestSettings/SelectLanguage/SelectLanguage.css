@@ -1,26 +1,30 @@
 .select-language-container {
-    margin-top: 20rem;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
+  margin-top: 40vh;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 5vh;
 }
 
 .language-card {
-    font-size: 2rem;
-    background-color: gray;
-    border: none;
-    border-radius: 10px;
-    padding: 2rem;
-    text-decoration: none;
-    transition: 0.1s;
-    cursor: pointer;
+  font-size: 2rem;
+  background-color: gray;
+  border: none;
+  border-radius: 10px;
+  padding: 2rem;
+  text-decoration: none;
+  transition: 0.1s;
+  cursor: pointer;
+  min-width: fit-content;
+  min-height: fit-content;
 }
 
 .language-card:hover {
-    scale: 1.03;
-    background-color: var(--highlight-colour);
+  scale: 1.03;
+  background-color: var(--highlight-colour);
 }
 
 .language-card:active {
-    scale: 0.97;
+  scale: 0.97;
 }

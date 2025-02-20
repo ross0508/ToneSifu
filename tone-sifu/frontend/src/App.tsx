@@ -1,11 +1,10 @@
-import Hero from "./Hero/Hero"
-import Training from "./Training/Training"
-import Profile from "./Profile/Profile"
-import { Routes, Route } from 'react-router-dom'
-import CreateUser from "./CreateUser"
+import Hero from "./Hero/Hero";
+import Training from "./Training/Training";
+import Profile from "./Profile/Profile";
+import { Routes, Route } from "react-router-dom";
+import CreateUser from "./CreateUser";
 
 function App() {
-
   return (
     <>
       <CreateUser />
@@ -15,7 +14,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

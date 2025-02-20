@@ -1,5 +1,5 @@
 :root {
-  font-family: 'Cascadia Code', Arial, Helvetica, sans-serif;
+  font-family: "Cascadia Code", Arial, Helvetica, sans-serif;
   line-height: 1.5;
 
   color-scheme: light dark;
@@ -12,16 +12,16 @@
   -moz-osx-font-smoothing: grayscale;
 
   --primary-colour: #000000;
-  --secondary-colour: #AED8AC;
+  --secondary-colour: #aed8ac;
   --secondary-colour-lighter: hsl(from var(--secondary-colour) h s calc(l + 8));
   --correct-colour: hsl(117, 100%, 70%);
-  --highlight-colour: #A00;
+  --highlight-colour: #a00;
   --text-colour: #ffffff;
   --text-colour-secondary: #000000;
 }
 
 * {
-  box-sizing:border-box;
+  box-sizing: border-box;
   font-weight: 350;
   text-decoration: none;
 }
