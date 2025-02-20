@@ -28,6 +28,12 @@ export default function Training({
 
   return (
     <>
+      <FullNavbar
+        language={language}
+        setLanguage={setLanguage}
+        testState={testState}
+        setTestState={setTestState}
+      />
       <div className="training-page">
         {testState == 0 && (
           <TestSettings

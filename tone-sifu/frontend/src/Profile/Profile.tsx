@@ -6,7 +6,12 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import ExpBar from "./ExpBar/ExpBar";
 
-export default function Profile({ language, setLanguage }) {
+export default function Profile({
+  language,
+  setLanguage,
+  testState,
+  setTestState,
+}) {
   const { user, isAuthenticated } = useAuth0();
   const [logData, setLogData] = useState([]);
   const [expData, setExpData] = useState([]);
@@ -70,6 +75,12 @@ export default function Profile({ language, setLanguage }) {
 
   return (
     <>
+      <FullNavbar
+        language={language}
+        setLanguage={setLanguage}
+        testState={testState}
+        setTestState={setTestState}
+      />
       <div className="profile-container">
         <div className="profile-information-container">
           <h1>Name</h1>

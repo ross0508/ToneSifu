@@ -21,7 +21,7 @@ export default function FullNavbar({
 
   return (
     <div className="navbar-container">
-      {testState != 1 && (
+      {testState == 0 && (
         <select
           className="language-dropdown"
           value={language}
@@ -35,6 +35,11 @@ export default function FullNavbar({
           </option>
         </select>
       )}
+      <NavButton
+        resetTraining={resetTraining}
+        destination="/lessons"
+        title="Lessons"
+      ></NavButton>
       <NavButton
         resetTraining={resetTraining}
         destination="/training"

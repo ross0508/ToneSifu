@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import CreateUser from "./CreateUser";
 import { useState } from "react";
 import FullNavbar from "./FullNavbar/FullNavbar";
+import Lessons from "./Lessons/Lessons";
 
 function App() {
   const [language, setLanguage] = useState("cmn");
@@ -13,14 +14,9 @@ function App() {
   return (
     <>
       <CreateUser />
-      <FullNavbar
-        language={language}
-        setLanguage={setLanguage}
-        testState={testState}
-        setTestState={setTestState}
-      />
       <Routes>
         <Route path="/" element={<Hero />} />
+        <Route path="/lessons" element={<Lessons />} />
         <Route
           path="/training"
           element={
@@ -39,6 +35,7 @@ function App() {
               language={language}
               setLanguage={setLanguage}
               testState={testState}
+              setTestState={setTestState}
             />
           }
         />
