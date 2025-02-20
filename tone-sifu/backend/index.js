@@ -70,8 +70,8 @@ app.post("/users/:user_id", async (req, res) => {
 
   try {
     const userResult = await pool.query(
-      "INSERT INTO users (user_id, exp) VALUES ($1, $2) RETURNING user_id, exp",
-      [user_id, 0]
+      "INSERT INTO users (user_id, exp, exp_yue, exp_cmn) VALUES ($1, 0, 0, 0) RETURNING user_id, exp",
+      [user_id]
     );
 
     const { user_id: userId, exp } = userResult.rows[0];

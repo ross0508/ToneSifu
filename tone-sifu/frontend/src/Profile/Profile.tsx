@@ -16,6 +16,8 @@ export default function Profile({
   const [logData, setLogData] = useState([]);
   const [expData, setExpData] = useState([]);
   const [timePeriod, setTimePeriod] = useState(30);
+  const [gotLogs, setGotLogs] = useState(false);
+  const [gotExp, setGotExp] = useState(false);
 
   const { logout } = useAuth0();
 
@@ -27,6 +29,7 @@ export default function Profile({
           url: `http://localhost:8080/users/${user.sub}`,
         });
         setExpData(response.data);
+        setGotExp(true);
       } catch (error) {
         console.error("Error getting exp data", error);
       }
@@ -48,6 +51,7 @@ export default function Profile({
           },
         });
         setLogData(response.data);
+        setGotLogs(true);
       } catch (error) {
         console.error("Error getting log data", error);
       }
@@ -62,7 +66,7 @@ export default function Profile({
     setTimePeriod(e.target.value);
   };
 
-  if (!isAuthenticated || logData.length === 0 || expData.length === 0) {
+  if (!isAuthenticated || !gotLogs || !gotExp) {
     return (
       <>
         <FullNavbar />
@@ -85,11 +89,9 @@ export default function Profile({
         <div className="profile-information-container">
           <h1>Name</h1>
           <p>{user.name}</p>
-          {expData.length > 0 && (
-            <>
-              <p>Total Exp: {expData[0].exp}</p>
-            </>
-          )}
+          <>
+            <p>Total Exp: {expData[0].exp}</p>
+          </>
         </div>
         <div className="graph-container">
           <div className="graph-button-container">
