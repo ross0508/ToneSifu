@@ -16,7 +16,17 @@ function App() {
       <CreateUser />
       <Routes>
         <Route path="/" element={<Hero />} />
-        <Route path="/lessons" element={<Lessons />} />
+        <Route
+          path="/lessons"
+          element={
+            <Lessons
+              language={language}
+              setLanguage={setLanguage}
+              testState={testState}
+              setTestState={setTestState}
+            />
+          }
+        />
         <Route
           path="/training"
           element={
