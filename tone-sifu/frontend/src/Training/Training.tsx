@@ -1,23 +1,33 @@
 import TestSettings from "../TestSettings/TestSettings";
 import "./Training.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TestScreen from "../TestScreen/TestScreen";
 import Results from "../Results/Results";
 import FullNavbar from "../FullNavbar/FullNavbar";
 
-export default function Training() {
-  const [language, setLanguage] = useState("cmn");
-  const [testState, setTestState] = useState(0);
+export default function Training({
+  language,
+  setLanguage,
+  testState,
+  setTestState,
+}) {
+  const toneArray = {
+    cmn: [1, 2, 3, 4],
+    yue: [1, 2, 3, 4, 5, 6],
+  };
   const [wordList, setWordList] = useState([]);
-  const [filterList, setFilterList] = useState([]);
+  const [filterList, setFilterList] = useState(toneArray[language]);
   const [questionLog, setQuestionLog] = useState([]);
   const [score, setScore] = useState(0); // Tracks total score
   const [total, setTotal] = useState([]); // Tracks number of questions
   const [length, setLength] = useState(10);
 
+  useEffect(() => {
+    setFilterList(toneArray[language]);
+  }, [language]);
+
   return (
     <>
-      <FullNavbar />
       <div className="training-page">
         {testState == 0 && (
           <TestSettings

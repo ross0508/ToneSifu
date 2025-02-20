@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-export default function NavButton({ destination, title }) {
+export default function NavButton({ destination, title, resetTraining }) {
   return (
-    <Link className='navbutton' to={destination}>{title}</Link>
-  )
+    <Link onClick={resetTraining} className="navbutton" to={destination}>
+      {title}
+    </Link>
+  );
 }

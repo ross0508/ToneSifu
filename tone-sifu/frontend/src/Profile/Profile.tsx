@@ -6,9 +6,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import ExpBar from "./ExpBar/ExpBar";
 
-export default function Profile() {
+export default function Profile({ language, setLanguage }) {
   const { user, isAuthenticated } = useAuth0();
-  const [language, setLanguage] = useState("cmn");
   const [logData, setLogData] = useState([]);
   const [expData, setExpData] = useState([]);
   const [timePeriod, setTimePeriod] = useState(30);
@@ -69,7 +68,6 @@ export default function Profile() {
 
   return (
     <>
-      <FullNavbar />
       <div className="profile-container">
         <div className="profile-information-container">
           <h1>Name</h1>
@@ -83,22 +81,6 @@ export default function Profile() {
         <div className="graph-container">
           <div className="graph-button-container">
             <LineGraph language={language} logData={logData}></LineGraph>
-            {language == "yue" && (
-              <button
-                className="graph-language-button"
-                onClick={() => setLanguage("cmn")}
-              >
-                Cantonese
-              </button>
-            )}
-            {language == "cmn" && (
-              <button
-                className="graph-language-button"
-                onClick={() => setLanguage("yue")}
-              >
-                Mandarin
-              </button>
-            )}
           </div>
           {language == "cmn" && <h1>Exp: {expData[0].exp_cmn}</h1>}
           {language == "cmn" && <ExpBar exp={expData[0].exp_cmn} />}
