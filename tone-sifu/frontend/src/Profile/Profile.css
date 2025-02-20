@@ -1,36 +1,35 @@
 .profile-container {
-    background-color: rgb(31, 31, 31);
-    height: 100vh;
-    width: 100%;
-    padding: 5rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
+  background-color: rgb(31, 31, 31);
+  height: 100vh;
+  width: 100%;
+  padding: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .profile-information-container {
-    margin: 5rem;
+  margin: 5rem;
 }
 
 .graph-container {
-    width: auto;
-    height: 50vh;
-    max-height: 50vh;
+  width: auto;
+  height: 50vh;
+  max-height: 50vh;
 }
 
 .graph-language-button {
-    max-height: 6vh;
-    min-width: 10vh;
-    cursor: pointer;
+  max-height: 6vh;
+  min-width: 10vh;
+  cursor: pointer;
 }
 
 .graph-button-container {
-    background-color: rgb(48, 48, 48);
-    width: vw;
-    height: 50vh;
-    max-width: 70vw;
-    max-height: 50vh;
-    display: flex;
-    justify-content: space-around;
+  background-color: rgb(48, 48, 48);
+  height: 50vh;
+  max-width: 70vw;
+  max-height: 50vh;
+  display: flex;
+  justify-content: space-around;
 }

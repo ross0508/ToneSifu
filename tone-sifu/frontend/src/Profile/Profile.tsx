@@ -106,7 +106,7 @@ export default function Profile() {
           {language == "yue" && <ExpBar exp={expData[0].exp_yue} />}
         </div>
 
-        <label>Time Period:</label>
+        <label>Time Frame:</label>
         <select value={timePeriod} onChange={handleDropdown}>
           <option value={7}>Week</option>
           <option value={30}>Month</option>
