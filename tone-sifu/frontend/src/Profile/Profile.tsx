@@ -12,6 +12,8 @@ export default function Profile({ language, setLanguage }) {
   const [expData, setExpData] = useState([]);
   const [timePeriod, setTimePeriod] = useState(30);
 
+  const { logout } = useAuth0();
+
   useEffect(() => {
     const getExp = async () => {
       try {
@@ -94,6 +96,9 @@ export default function Profile({ language, setLanguage }) {
           <option value={30}>Month</option>
           <option value={365}> Year</option>
         </select>
+        <button onClick={() => logout({ returnTo: window.location.origin })}>
+          Logout
+        </button>
       </div>
     </>
   );
