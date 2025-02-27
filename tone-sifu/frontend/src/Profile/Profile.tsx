@@ -11,6 +11,8 @@ export default function Profile({
   setLanguage,
   testState,
   setTestState,
+  lessonState,
+  setLessonState,
 }) {
   const { user, isAuthenticated } = useAuth0();
   const [logData, setLogData] = useState([]);
@@ -84,6 +86,8 @@ export default function Profile({
         setLanguage={setLanguage}
         testState={testState}
         setTestState={setTestState}
+        lessonState={lessonState}
+        setLessonState={setLessonState}
       />
       <div className="profile-container">
         <div className="profile-information-container">

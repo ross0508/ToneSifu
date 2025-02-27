@@ -10,6 +10,8 @@ export default function Training({
   setLanguage,
   testState,
   setTestState,
+  lessonState,
+  setLessonState,
 }) {
   const toneArray = {
     cmn: [1, 2, 3, 4],
@@ -33,6 +35,8 @@ export default function Training({
         setLanguage={setLanguage}
         testState={testState}
         setTestState={setTestState}
+        lessonState={lessonState}
+        setLessonState={setLessonState}
       />
       <div className="training-page">
         {testState == 0 && (

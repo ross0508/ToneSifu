@@ -11,3 +11,23 @@
   padding: 0;
   position: relative;
 }
+
+.lesson-card-container {
+  margin-top: 15vh;
+  display: flex;
+}
+
+.lesson-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  background-color: rgb(0, 0, 0, 50%);
+  border-radius: 10px;
+  margin: 5rem;
+  margin-top: 0vh;
+  padding: 1rem;
+  text-align: center;
+}

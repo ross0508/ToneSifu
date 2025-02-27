@@ -8,6 +8,8 @@ export default function FullNavbar({
   setLanguage,
   testState,
   setTestState,
+  lessonState,
+  setLessonState,
 }) {
   const { isAuthenticated } = useAuth0();
 
@@ -16,12 +18,14 @@ export default function FullNavbar({
   };
 
   const resetTraining = () => {
+    // Reset testState and lessonState
     setTestState(0);
+    setLessonState(0);
   };
 
   return (
     <div className="navbar-container">
-      {testState == 0 && (
+      {testState == 0 && lessonState == 0 && (
         <select
           className="language-dropdown"
           value={language}
