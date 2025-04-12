@@ -8,8 +8,6 @@ export default function FullNavbar({
   setLanguage,
   testState,
   setTestState,
-  lessonState,
-  setLessonState,
 }) {
   const { isAuthenticated } = useAuth0();
 
@@ -18,14 +16,13 @@ export default function FullNavbar({
   };
 
   const resetTraining = () => {
-    // Reset testState and lessonState
+    // Reset testState
     setTestState(0);
-    setLessonState(0);
   };
 
   return (
     <div className="navbar-container">
-      {testState == 0 && lessonState == 0 && (
+      {testState == 0 && (
         <select
           className="language-dropdown"
           value={language}
@@ -39,11 +36,6 @@ export default function FullNavbar({
           </option>
         </select>
       )}
-      <NavButton
-        resetTraining={resetTraining}
-        destination="/lessons"
-        title="Lessons"
-      ></NavButton>
       <NavButton
         resetTraining={resetTraining}
         destination="/training"
