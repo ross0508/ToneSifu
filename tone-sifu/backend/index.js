@@ -11,6 +11,13 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+// Serve the HTML file on any route
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/dist", "index.html"));
+});
+
 app.listen(PORT, () => {
   console.log("Running on localhost:" + PORT);
 });
