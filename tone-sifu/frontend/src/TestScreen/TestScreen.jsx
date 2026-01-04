@@ -59,7 +59,7 @@ export default function TestScreen({
   });
 
   useEffect(() => {
-    const audio = new Audio(currentWord.romanization + ".mp3");
+    const audio = new Audio("http://localhost:8080/audio/" + currentWord.romanization + ".mp3");
     audio.play();
   }, [currentWord]);
 
@@ -193,7 +193,7 @@ export default function TestScreen({
   };
 
   const handleAudio = () => {
-    const audio = new Audio(currentWord.romanization + ".mp3");
+    const audio = new Audio("http://localhost:8080/audio/" + currentWord.romanization + ".mp3");
     audio.play();
   };
 

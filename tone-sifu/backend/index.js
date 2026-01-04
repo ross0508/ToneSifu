@@ -3,9 +3,13 @@ const cors = require("cors");
 const pool = require("./db");
 
 const express = require("express");
+const path = require("path");
+
 app = express();
 app.use(cors());
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.listen(PORT, () => {
   console.log("Running on localhost:" + PORT);
@@ -235,4 +239,18 @@ app.get("/log/yue/:user_id", async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Database error" });
   }
+});
+
+// Get audio file
+
+app.get("/audio/:filename", (req, res) => {
+  const { filename } = req.params;
+  const audioPath = path.join(__dirname, "public", "audio", filename);
+
+  res.sendFile(audioPath, (err) => {
+    if (err) {
+      console.error("Error sending file:", err);
+      res.status(404).send("Audio file not found");
+    }
+  });
 });
