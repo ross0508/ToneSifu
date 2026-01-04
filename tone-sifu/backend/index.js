@@ -22,7 +22,7 @@ app.listen(PORT, () => {
   console.log("Running on localhost:" + PORT);
 });
 
-// MANDARIN
+// MANDARI N
 
 // GET word by id
 
