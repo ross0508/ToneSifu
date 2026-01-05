@@ -13,11 +13,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.static(path.join(__dirname, "frontend/build")));
 
-// Serve the HTML file on any route
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/build", "index.html"));
-});
-
 app.listen(PORT, () => {
   console.log("Running on localhost:" + PORT);
 });
@@ -214,7 +209,7 @@ app.get("/log/cmn/:user_id", async (req, res) => {
       `SELECT * 
              FROM user_performance_cmn
              WHERE user_id = $1 
-             AND TO_DATE(date, 'YYYY-MM-DD') >= CURRENT_DATE - make_interval(days => $2) 
+             AND date >= CURRENT_DATE - make_interval(days => $2) 
              ORDER BY date DESC`,
       [user_id, timePeriod]
     );
@@ -236,7 +231,7 @@ app.get("/log/yue/:user_id", async (req, res) => {
       `SELECT * 
              FROM user_performance_yue 
              WHERE user_id = $1 
-             AND TO_DATE(date, 'YYYY-MM-DD') >= CURRENT_DATE - make_interval(days => $2) 
+             AND date >= CURRENT_DATE - make_interval(days => $2) 
              ORDER BY date DESC`,
       [user_id, timePeriod]
     );
@@ -260,4 +255,8 @@ app.get("/audio/:filename", (req, res) => {
       res.status(404).send("Audio file not found");
     }
   });
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/build", "index.html"));
 });
