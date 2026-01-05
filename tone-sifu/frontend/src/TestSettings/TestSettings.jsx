@@ -30,7 +30,7 @@ export default function TestSettings({
     try {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:8080/words/${language}/random/${length}`,
+        url: `https://tonesifu.onrender.com/words/${language}/random/${length}`,
         params: {
           tones: filterList, // Send tone list for filtering as query params
         },

@@ -13,7 +13,7 @@ export default function CreateUser() {
     try {
       const response = await axios({
         method: "POST",
-        url: `http://localhost:8080/users/${user.sub}`,
+        url: `https://tonesifu.onrender.com/users/${user.sub}`,
       });
       return response.data;
     } catch (error) {

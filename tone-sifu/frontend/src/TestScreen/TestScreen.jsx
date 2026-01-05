@@ -59,7 +59,7 @@ export default function TestScreen({
   });
 
   useEffect(() => {
-    const audio = new Audio("http://localhost:8080/audio/" + currentWord.romanization + ".mp3");
+    const audio = new Audio("https://tonesifu.onrender.com/audio/" + currentWord.romanization + ".mp3");
     audio.play();
   }, [currentWord]);
 
@@ -193,7 +193,7 @@ export default function TestScreen({
   };
 
   const handleAudio = () => {
-    const audio = new Audio("http://localhost:8080/audio/" + currentWord.romanization + ".mp3");
+    const audio = new Audio("https://tonesifu.onrender.com/audio/" + currentWord.romanization + ".mp3");
     audio.play();
   };
 
@@ -201,7 +201,7 @@ export default function TestScreen({
     try {
       const response = await axios({
         method: "POST",
-        url: `http://localhost:8080/log/${language}/${user.sub}`,
+        url: `https://tonesifu.onrender.com/log/${language}/${user.sub}`,
         params: {
           // CHANGE THIS TO BODY
           score: score,
@@ -218,7 +218,7 @@ export default function TestScreen({
     try {
       const response = await axios({
         method: "PUT",
-        url: `http://localhost:8080/users/${user.sub}`,
+        url: `https://tonesifu.onrender.com/users/${user.sub}`,
         data: {
           expAdded: score[0],
           language: language,

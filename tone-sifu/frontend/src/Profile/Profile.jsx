@@ -26,7 +26,7 @@ export default function Profile({
       try {
         const response = await axios({
           method: "GET",
-          url: `http://localhost:8080/users/${user.sub}`,
+          url: `https://tonesifu.onrender.com/users/${user.sub}`,
         });
         setExpData(response.data);
         setGotExp(true);
@@ -45,7 +45,7 @@ export default function Profile({
       try {
         const response = await axios({
           method: "GET",
-          url: `http://localhost:8080/log/${language}/${user.sub}`,
+          url: `https://tonesifu.onrender.com/log/${language}/${user.sub}`,
           params: {
             timePeriod: timePeriod,
           },
