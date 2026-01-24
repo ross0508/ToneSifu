@@ -4,6 +4,7 @@ import Profile from "./Profile/Profile";
 import { Routes, Route } from "react-router-dom";
 import CreateUser from "./CreateUser";
 import { useState } from "react";
+import Lessons from "./Lessons/Lessons";
 
 function App() {
   const [language, setLanguage] = useState("cmn");
@@ -15,9 +16,31 @@ function App() {
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route
+          path="/lessons"
+          element={
+            <Lessons
+              language={language}
+              setLanguage={setLanguage}
+              testState={testState}
+              setTestState={setTestState}
+            />
+          }
+        />
+        <Route
           path="/training"
           element={
             <Training
+              language={language}
+              setLanguage={setLanguage}
+              testState={testState}
+              setTestState={setTestState}
+            />
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Profile
               language={language}
               setLanguage={setLanguage}
               testState={testState}
