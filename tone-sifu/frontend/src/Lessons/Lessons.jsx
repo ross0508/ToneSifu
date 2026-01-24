@@ -7,7 +7,6 @@ export default function Lessons({
   testState,
   setTestState,
 }) {
-  console.log(testState);
   return (
     <>
       <FullNavbar

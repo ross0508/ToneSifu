@@ -38,6 +38,11 @@ export default function FullNavbar({
       )}
       <NavButton
         resetTraining={resetTraining}
+        destination="/lessons"
+        title="Lessons"
+      ></NavButton>
+      <NavButton
+        resetTraining={resetTraining}
         destination="/training"
         title="Training"
       ></NavButton>
